@@ -24,11 +24,11 @@ import java.util.List;
 public class Runner {
     public static void main(String[] args) {
         List<Student> students = new ArrayList<>();
-        Student student1 = new Student("Kirill", "Kebikov", LocalDate.of(1995, 3, 9));
-        Student student2 = new Student("Vasia", "Pupkin", LocalDate.of(1995, 3, 9));
-        Student student3 = new Student("Alex", "Gropur", LocalDate.of(1995, 3, 9));
-        Student student4 = new Student("Andrey", "Sochy", LocalDate.of(1995, 3, 9));
-        Student student5 = new Student("Andrey", "Vlasov", LocalDate.of(1995, 3, 9));
+        Student student1 = new Student("Ivan", "Ivanovich", LocalDate.of(2000, 5, 10));
+        Student student2 = new Student("Vasia", "Pupkin", LocalDate.of(2001, 2, 7));
+        Student student3 = new Student("Alex", "Gropur", LocalDate.of(1999, 10, 5));
+        Student student4 = new Student("Andrey", "Sochy", LocalDate.of(2002, 12, 3));
+        Student student5 = new Student("Andrey", "Vlasov", LocalDate.of(2000, 1, 19));
         students.add(student1);
         students.add(student2);
         students.add(student3);
@@ -36,6 +36,7 @@ public class Runner {
 
         Gradebook gradebook = new Gradebook();
         try {
+            // Interception of the error "score below 0 or above 10".
             try {
                 gradebook.addRecord(student1, SubjectType.JAVA, 8);
                 gradebook.addRecord(student2, SubjectType.JAVA, 7);
@@ -45,6 +46,7 @@ public class Runner {
                 gradebook.addRecord(student1, SubjectType.JAVA, 5);
                 gradebook.addRecord(student3, SubjectType.JAVA, 7);
                 gradebook.addRecord(student2, SubjectType.JAVA, 1);
+                gradebook.addRecord(student5, SubjectType.JAVA, 1);
                 gradebook.addRecord(student1, SubjectType.ENGLISH, 5);
                 gradebook.addRecord(student2, SubjectType.ENGLISH, 2);
                 gradebook.addRecord(student3, SubjectType.ENGLISH, 9);
@@ -53,10 +55,12 @@ public class Runner {
                 gradebook.addRecord(student4, SubjectType.ENGLISH, 10);
                 gradebook.addRecord(student2, SubjectType.ENGLISH, 4);
                 gradebook.addRecord(student3, SubjectType.ENGLISH, 0);
+                gradebook.addRecord(student5, SubjectType.ENGLISH, 4);
             } catch (MarkException markException) {
                 markException.printStackTrace();
             }
 
+            // Interception of the error "lack of students in the group".
             try {
                 List<Student> webStudents = new ArrayList<>();
                 Group webDev = new WebDevelopmentGroup(GroupType.WEB_DEVELOPMENT, webStudents, gradebook);
@@ -64,6 +68,7 @@ public class Runner {
                 emptyGroupException.printStackTrace();
             }
 
+            // Interception of the error "lack of groups at the faculty".
             try {
                 List<Group> groups = new ArrayList<>();
                 EconomyFaculty economyFaculty = new EconomyFaculty(FacultyType.ECONOMY, groups);
@@ -71,6 +76,7 @@ public class Runner {
                 emptyFacultyException.printStackTrace();
             }
 
+            // Interception of the error "lack of faculties at the university".
             try {
                 List<Faculty> lawFaculty = new ArrayList<>();
                 University universityOfLaw = new University("University of law", lawFaculty);
@@ -85,12 +91,16 @@ public class Runner {
             faculties.add(informationTechnologyFaculty);
             University university = new University("Belorussian University", faculties);
 
-            System.out.println("Get student average mark: " + university.getAverageMark(student2));
-
-            System.out.println("Get subject average mark: " + university.getAverageMark(SubjectType.JAVA, FacultyType.INFORMATION_TECHNOLOGY, GroupType.JAVA_DEVELOPMENT));
-
-            System.out.println("Get subject average mark of all university: " + university.getAverageMark(SubjectType.JAVA));
-        } catch(Exception e) {
+            System.out.printf("Get average mark of student '%s': %.2f\n", student2.getStudentName(),
+                    university.getAverageMark(student2));
+            System.out.printf("Get subject '%s' average mark in the faculty '%s' in group '%s': %.2f\n",
+                    SubjectType.JAVA.getSubjectName(),
+                    FacultyType.INFORMATION_TECHNOLOGY.getFacultyName(),
+                    GroupType.JAVA_DEVELOPMENT.getGroupName(),
+                    university.getAverageMark(SubjectType.JAVA, FacultyType.INFORMATION_TECHNOLOGY, GroupType.JAVA_DEVELOPMENT));
+            System.out.printf("Get subject '%s' average mark of all university: %.2f\n",
+                    SubjectType.JAVA.getSubjectName(), university.getAverageMark(SubjectType.JAVA));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

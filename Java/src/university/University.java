@@ -24,6 +24,7 @@ public class University {
         }
     }
 
+    // The method for calculating the average score for all subjects of a particular student.
     public float getAverageMark(Student student) {
         float averageMark = 0;
         for (Faculty faculty:faculties) {
@@ -36,6 +37,7 @@ public class University {
         return averageMark;
     }
 
+    // The method for calculating the average score for a specific subject in a specific group and at a specific faculty.
     public float getAverageMark(SubjectType subject, FacultyType facultyType, GroupType groupType) {
         float averageMark = 0;
         for (Faculty currentFaculty:faculties) {
@@ -49,13 +51,18 @@ public class University {
         return averageMark;
     }
 
+    // The method for calculating the average grade for a specific subject for the entire university.
     public float getAverageMark(SubjectType subject) {
         float averageMark = 0;
+        int count = 0;
         for (Faculty currentFaculty:faculties) {
             for (Group currentGroup:currentFaculty.getGroups()) {
-                    averageMark = currentGroup.getAverageMark(subject);
+                if(currentGroup.getAverageMark(subject) > 0) {
+                    averageMark += currentGroup.getAverageMark(subject);
+                    count++;
+                }
             }
         }
-        return averageMark;
+        return averageMark / count;
     }
 }

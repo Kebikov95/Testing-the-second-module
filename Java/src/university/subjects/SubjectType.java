@@ -1,5 +1,23 @@
 package university.subjects;
 
 public enum SubjectType {
-    MATHEMATICS, PHYSICS, MATHEMATICAL_MODELING, WEB_DESIGN, JAVA, ECONOMY, ENERGETICS, PHILOSOPHY, HISTORY, ENGLISH
+    MATHEMATICS("Mathematics"),
+    PHYSICS("Physics"),
+    MATHEMATICAL_MODELING("Mathematical modeling"),
+    WEB_DESIGN("WEB design"),
+    JAVA("Java"),
+    ECONOMY("Economy"),
+    ENERGETICS("Energetics"),
+    PHILOSOPHY("Philosophy"),
+    HISTORY("History"),
+    ENGLISH("English");
+
+    private String subjectName;
+    SubjectType(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
+    public String getSubjectName() {
+        return subjectName;
+    }
 }
