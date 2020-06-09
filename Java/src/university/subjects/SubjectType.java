@@ -1,0 +1,5 @@
+package university.subjects;
+
+public enum SubjectType {
+    MATHEMATICS, PHYSICS, MATHEMATICAL_MODELING, WEB_DESIGN, JAVA, ECONOMY, ENERGETICS, PHILOSOPHY, HISTORY, ENGLISH
+}

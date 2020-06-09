@@ -1,0 +1,40 @@
+package university.subjects;
+
+import university.exceptions.MarkException;
+import university.students.Student;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Gradebook {
+    private List<Record> records;
+
+    public Gradebook() {
+        records = new ArrayList<>();
+    }
+
+    public Gradebook(List<Record> records) {
+        this.records = records;
+    }
+
+    public void addRecord(Student student, SubjectType subjectType, int mark) throws MarkException {
+        records.add(new Record(student, subjectType, mark));
+    }
+
+    public List<Record> getRecords() {
+        return records;
+    }
+
+    public void display() {
+        for (Record record:records) {
+            System.out.println(record.getRecordLine());
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Gradebook{" +
+                "records=" + records +
+                '}';
+    }
+}
