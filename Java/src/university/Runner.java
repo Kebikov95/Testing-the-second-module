@@ -10,6 +10,7 @@ import university.faculties.FacultyType;
 import university.faculties.TechnologyFaculty;
 import university.groups.Group;
 import university.groups.GroupType;
+import university.groups.economy.BusinessEconomicsGroup;
 import university.groups.technology.JavaDevelopmentGroup;
 import university.groups.technology.WebDevelopmentGroup;
 import university.students.Student;
@@ -93,10 +94,11 @@ public class Runner {
                 markException.printStackTrace();
             }
 
-//            // Interception of the error "lack of students in the group".
+            // Interception of the error "lack of students in the group".
 //            try {
-//                List<Student> webStudents = new ArrayList<>();
-//                Group webDev = new WebDevelopmentGroup(webStudents, gradebook);
+//                List<Student> economyStudents = new ArrayList<>();
+//                Gradebook economyGradebook = new Gradebook();
+//                Group economists = new BusinessEconomicsGroup(economyStudents, economyGradebook);
 //            } catch (EmptyGroupException emptyGroupException) {
 //                emptyGroupException.printStackTrace();
 //            }
@@ -131,7 +133,6 @@ public class Runner {
             Gradebook javaGradeBook = javaGroupGradebook.getGradebok(SubjectType.JAVA);
             System.out.println("Return 'Java' gradebook:");
             javaGradeBook.display();
-
             System.out.println(university.getGroup(FacultyType.INFORMATION_TECHNOLOGY, GroupType.JAVA_DEVELOPMENT));
             System.out.println(javaDevelopmentGroup.getAverageMark(SubjectType.JAVA));
 
