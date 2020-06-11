@@ -6,7 +6,7 @@ import university.groups.Group;
 import java.util.List;
 
 public class EconomyFaculty extends Faculty {
-    public EconomyFaculty(FacultyType facultyType, List<Group> groups) throws EmptyFacultyException {
-        super(facultyType, groups);
+    public EconomyFaculty(List<Group> groups) throws EmptyFacultyException {
+        super(FacultyType.ECONOMY, groups);
     }
 }

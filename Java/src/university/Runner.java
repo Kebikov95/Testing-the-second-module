@@ -60,37 +60,40 @@ public class Runner {
                 markException.printStackTrace();
             }
 
-            // Interception of the error "lack of students in the group".
-            try {
-                List<Student> webStudents = new ArrayList<>();
-                Group webDev = new WebDevelopmentGroup(GroupType.WEB_DEVELOPMENT, webStudents, gradebook);
-            } catch (EmptyGroupException emptyGroupException) {
-                emptyGroupException.printStackTrace();
-            }
+//            // Interception of the error "lack of students in the group".
+//            try {
+//                List<Student> webStudents = new ArrayList<>();
+//                Group webDev = new WebDevelopmentGroup(webStudents, gradebook);
+//            } catch (EmptyGroupException emptyGroupException) {
+//                emptyGroupException.printStackTrace();
+//            }
+//
+//            // Interception of the error "lack of groups at the faculty".
+//            try {
+//                List<Group> groups = new ArrayList<>();
+//                EconomyFaculty economyFaculty = new EconomyFaculty(groups);
+//            } catch (EmptyFacultyException emptyFacultyException) {
+//                emptyFacultyException.printStackTrace();
+//            }
+//
+//            // Interception of the error "lack of faculties at the university".
+//            try {
+//                List<Faculty> lawFaculty = new ArrayList<>();
+//                University universityOfLaw = new University("University of law", lawFaculty);
+//            } catch (EmptyUniversityException emptyUniversityException) {
+//                emptyUniversityException.printStackTrace();
+//            }
 
-            // Interception of the error "lack of groups at the faculty".
-            try {
-                List<Group> groups = new ArrayList<>();
-                EconomyFaculty economyFaculty = new EconomyFaculty(FacultyType.ECONOMY, groups);
-            } catch (EmptyFacultyException emptyFacultyException) {
-                emptyFacultyException.printStackTrace();
-            }
-
-            // Interception of the error "lack of faculties at the university".
-            try {
-                List<Faculty> lawFaculty = new ArrayList<>();
-                University universityOfLaw = new University("University of law", lawFaculty);
-            } catch (EmptyUniversityException emptyUniversityException) {
-                emptyUniversityException.printStackTrace();
-            }
-
-            Group javaDevelopmentGroup = new JavaDevelopmentGroup(GroupType.JAVA_DEVELOPMENT, students, gradebook);
-            TechnologyFaculty informationTechnologyFaculty = new TechnologyFaculty(FacultyType.INFORMATION_TECHNOLOGY,
-                    Collections.singletonList(javaDevelopmentGroup));
+            Group javaDevelopmentGroup = new JavaDevelopmentGroup(students, gradebook);
+            TechnologyFaculty informationTechnologyFaculty = new TechnologyFaculty(Collections.singletonList(javaDevelopmentGroup));
             List<Faculty> faculties = new ArrayList<>();
             faculties.add(informationTechnologyFaculty);
             University university = new University("Belorussian University", faculties);
 
+            gradebook.display();
+            Gradebook javaGradeBook = gradebook.getGradebok(SubjectType.JAVA);
+            System.out.println("Return 'Java' gradebook:");
+            javaGradeBook.display();
             System.out.printf("Get average mark of student '%s': %.2f\n", student2.getStudentName(),
                     university.getAverageMark(student2));
             System.out.printf("Get subject '%s' average mark in the faculty '%s' in group '%s': %.2f\n",

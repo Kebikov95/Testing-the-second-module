@@ -17,12 +17,34 @@ public class Gradebook {
         this.records = records;
     }
 
+    public List<Record> getRecords() {
+        return records;
+    }
+
     public void addRecord(Student student, SubjectType subjectType, int mark) throws MarkException {
         records.add(new Record(student, subjectType, mark));
     }
 
-    public List<Record> getRecords() {
-        return records;
+    public Gradebook getGradebok(Student student) throws Exception {
+        return getGradebook((Object) student);
+    }
+
+    public Gradebook getGradebok(SubjectType type) throws Exception {
+        return getGradebook((Object) type);
+    }
+
+    private Gradebook getGradebook(Object object) throws Exception {
+        List<Record> returnRecordList = new ArrayList<>();
+        for (Record record : records) {
+            if (object instanceof SubjectType) {
+                if(record.getSubjectType() == object) returnRecordList.add(record);
+            } else if(object instanceof Student) {
+                if(object.equals(record.getStudent())) returnRecordList.add(record);
+            } else {
+                throw new Exception("A entered value type isn't expected.");
+            }
+        }
+        return new Gradebook(returnRecordList);
     }
 
     public void display() {

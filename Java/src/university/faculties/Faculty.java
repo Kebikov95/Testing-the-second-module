@@ -1,9 +1,10 @@
 package university.faculties;
 
 import university.exceptions.EmptyFacultyException;
-import university.exceptions.EmptyGroupException;
 import university.groups.Group;
+import university.groups.GroupType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Faculty {

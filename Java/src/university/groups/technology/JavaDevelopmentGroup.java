@@ -8,7 +8,7 @@ import university.subjects.Gradebook;
 import java.util.List;
 
 public class JavaDevelopmentGroup extends TechnologyGroup {
-    public JavaDevelopmentGroup(GroupType groupType, List<Student> studentList, Gradebook gradebook) throws EmptyGroupException {
-        super(groupType, studentList, gradebook);
+    public JavaDevelopmentGroup(List<Student> studentList, Gradebook gradebook) throws EmptyGroupException {
+        super(GroupType.JAVA_DEVELOPMENT, studentList, gradebook);
     }
 }

@@ -35,27 +35,28 @@ public abstract class Group {
         return gradebook;
     }
 
-    public float getAverageMark(Student student) {
-        int sum = 0;
-        int count = 0;
-        for (Record record:gradebook.getRecords()) {
-            if(student.equals(record.getStudent())) {
-                sum += record.getMark();
-                count++;
-            }
-        }
-        return (float) sum / count;
+    public float getAverageMark(Student student) throws Exception {
+        return getAverageMark((Object) student);
     }
 
-    public float getAverageMark(SubjectType subjectType) {
+    public float getAverageMark(SubjectType subjectType) throws Exception {
+        return getAverageMark((Object) subjectType);
+    }
+
+    private float getAverageMark(Object object) throws Exception {
         int sum = 0;
-        int count = 0;
-        for (Record record:gradebook.getRecords()) {
-            if(subjectType == record.getSubjectType()) {
-                sum += record.getMark();
-                count++;
-            }
+        Gradebook gradebook;
+        if (object instanceof SubjectType) {
+            gradebook  = this.gradebook.getGradebok((SubjectType) object);
+        } else if(object instanceof Student) {
+            gradebook = this.gradebook.getGradebok((Student) object);
+        } else {
+            throw new Exception("A entered value type isn't expected.");
         }
-        return (float) sum / count;
+
+        for (Record record : gradebook.getRecords()) {
+            sum += record.getMark();
+        }
+        return (float) sum / gradebook.getRecords().size();
     }
 }

@@ -8,7 +8,7 @@ import university.subjects.Gradebook;
 import java.util.List;
 
 public class BusinessEconomicsGroup extends EconomyGroup {
-    public BusinessEconomicsGroup(GroupType groupType, List<Student> studentList, Gradebook gradebook) throws EmptyGroupException {
-        super(groupType, studentList, gradebook);
+    public BusinessEconomicsGroup(List<Student> studentList, Gradebook gradebook) throws EmptyGroupException {
+        super(GroupType.BUSINESS_ECONOMICS, studentList, gradebook);
     }
 }
