@@ -1,6 +1,5 @@
 package university;
 
-import university.exceptions.EmptyFacultyException;
 import university.exceptions.EmptyUniversityException;
 import university.faculties.Faculty;
 import university.faculties.FacultyType;
@@ -9,7 +8,6 @@ import university.groups.GroupType;
 import university.students.Student;
 import university.subjects.SubjectType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class University {
@@ -25,12 +23,12 @@ public class University {
         }
     }
 
-    public Group getGroup(FacultyType facultyType, GroupType groupType) {
-        Group group = null;
+    public Faculty getFaculty(FacultyType facultyType) {
+        Faculty returnFaculty = null;
         for (Faculty faculty : faculties) {
-            if (faculty.getFacultyType() == facultyType) group = faculty.getGroup(groupType);
+            if (faculty.getFacultyType() == facultyType) returnFaculty = faculty;
         }
-        return group;
+        return returnFaculty;
     }
 
     // The method for calculating the average score for all subjects of a particular student.
@@ -48,7 +46,8 @@ public class University {
 
     // The method for calculating the average score for a specific subject in a specific group and at a specific faculty.
     public float getAverageMark(SubjectType subjectType, FacultyType facultyType, GroupType groupType) throws Exception {
-        Group group = getGroup(facultyType, groupType);
+        Faculty faculty = getFaculty(facultyType);
+        Group group = faculty.getGroup(groupType);
         return group.getAverageMark(subjectType);
     }
 

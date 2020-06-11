@@ -133,7 +133,6 @@ public class Runner {
             Gradebook javaGradeBook = javaGroupGradebook.getGradebok(SubjectType.JAVA);
             System.out.println("Return 'Java' gradebook:");
             javaGradeBook.display();
-            System.out.println(university.getGroup(FacultyType.INFORMATION_TECHNOLOGY, GroupType.JAVA_DEVELOPMENT));
             System.out.println(javaDevelopmentGroup.getAverageMark(SubjectType.JAVA));
 
             System.out.printf("Get average mark of student '%s': %.2f\n", student15.getStudentName(),
