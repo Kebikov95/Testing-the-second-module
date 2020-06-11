@@ -18,44 +18,77 @@ import university.subjects.SubjectType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
-        List<Student> students = new ArrayList<>();
-        Student student1 = new Student("Ivan", "Ivanovich", LocalDate.of(2000, 5, 10));
-        Student student2 = new Student("Vasia", "Pupkin", LocalDate.of(2001, 2, 7));
-        Student student3 = new Student("Alex", "Gropur", LocalDate.of(1999, 10, 5));
-        Student student4 = new Student("Andrey", "Sochy", LocalDate.of(2002, 12, 3));
-        Student student5 = new Student("Andrey", "Vlasov", LocalDate.of(2000, 1, 19));
-        students.add(student1);
-        students.add(student2);
-        students.add(student3);
-        students.add(student4);
+        List<Student> javaStudents = new ArrayList<>();
+        List<Student> webStudents = new ArrayList<>();
+        Student student11 = new Student("Ivan", "Ivanovich", LocalDate.of(2000, 5, 10));
+        Student student12 = new Student("Vasia", "Pupkin", LocalDate.of(2001, 2, 7));
+        Student student13 = new Student("Alex", "Gropur", LocalDate.of(1999, 10, 5));
+        Student student14 = new Student("Andrey", "Sochy", LocalDate.of(2002, 12, 3));
+        Student student15 = new Student("Andrey", "Vlasov", LocalDate.of(2000, 1, 19));
+        javaStudents.add(student11);
+        javaStudents.add(student12);
+        javaStudents.add(student13);
+        javaStudents.add(student14);
+        javaStudents.add(student15);
 
-        Gradebook gradebook = new Gradebook();
+
+        Student student21 = new Student("Mike", "Fedotov", LocalDate.of(2001, 5, 10));
+        Student student22 = new Student("Gary", "Shmeltzer", LocalDate.of(2002, 2, 7));
+        Student student23 = new Student("Dmitry", "Nikonov", LocalDate.of(1998, 10, 5));
+        Student student24 = new Student("Nukolay", "Litvinov", LocalDate.of(2001, 12, 3));
+        Student student25 = new Student("Fedor", "Antonov", LocalDate.of(2000, 1, 19));
+        webStudents.add(student21);
+        webStudents.add(student22);
+        webStudents.add(student23);
+        webStudents.add(student24);
+        webStudents.add(student25);
+
+        Gradebook javaGroupGradebook = new Gradebook();
+        Gradebook webGroupGradebook = new Gradebook();
         try {
             // Interception of the error "score below 0 or above 10".
             try {
-                gradebook.addRecord(student1, SubjectType.JAVA, 8);
-                gradebook.addRecord(student2, SubjectType.JAVA, 7);
-                gradebook.addRecord(student3, SubjectType.JAVA, 8);
-                gradebook.addRecord(student2, SubjectType.JAVA, 9);
-                gradebook.addRecord(student4, SubjectType.JAVA, 2);
-                gradebook.addRecord(student1, SubjectType.JAVA, 5);
-                gradebook.addRecord(student3, SubjectType.JAVA, 7);
-                gradebook.addRecord(student2, SubjectType.JAVA, 1);
-                gradebook.addRecord(student5, SubjectType.JAVA, 1);
-                gradebook.addRecord(student1, SubjectType.ENGLISH, 5);
-                gradebook.addRecord(student2, SubjectType.ENGLISH, 2);
-                gradebook.addRecord(student3, SubjectType.ENGLISH, 9);
-                gradebook.addRecord(student1, SubjectType.ENGLISH, 5);
-                gradebook.addRecord(student2, SubjectType.ENGLISH, 2);
-                gradebook.addRecord(student4, SubjectType.ENGLISH, 10);
-                gradebook.addRecord(student2, SubjectType.ENGLISH, 4);
-                gradebook.addRecord(student3, SubjectType.ENGLISH, 0);
-                gradebook.addRecord(student5, SubjectType.ENGLISH, 4);
+                javaGroupGradebook.addRecord(student11, SubjectType.JAVA, 8);
+                javaGroupGradebook.addRecord(student12, SubjectType.JAVA, 7);
+                javaGroupGradebook.addRecord(student13, SubjectType.JAVA, 8);
+                javaGroupGradebook.addRecord(student12, SubjectType.JAVA, 9);
+                javaGroupGradebook.addRecord(student14, SubjectType.JAVA, 2);
+                javaGroupGradebook.addRecord(student11, SubjectType.JAVA, 5);
+                javaGroupGradebook.addRecord(student13, SubjectType.JAVA, 7);
+                javaGroupGradebook.addRecord(student12, SubjectType.JAVA, 1);
+                javaGroupGradebook.addRecord(student15, SubjectType.JAVA, 1);
+                javaGroupGradebook.addRecord(student11, SubjectType.ENGLISH, 5);
+                javaGroupGradebook.addRecord(student12, SubjectType.ENGLISH, 2);
+                javaGroupGradebook.addRecord(student13, SubjectType.ENGLISH, 9);
+                javaGroupGradebook.addRecord(student11, SubjectType.ENGLISH, 5);
+                javaGroupGradebook.addRecord(student12, SubjectType.ENGLISH, 2);
+                javaGroupGradebook.addRecord(student14, SubjectType.ENGLISH, 10);
+                javaGroupGradebook.addRecord(student12, SubjectType.ENGLISH, 4);
+                javaGroupGradebook.addRecord(student13, SubjectType.ENGLISH, 0);
+                javaGroupGradebook.addRecord(student15, SubjectType.ENGLISH, 4);
+
+                webGroupGradebook.addRecord(student21, SubjectType.JAVA, 8);
+                webGroupGradebook.addRecord(student22, SubjectType.JAVA, 7);
+                webGroupGradebook.addRecord(student23, SubjectType.JAVA, 8);
+                webGroupGradebook.addRecord(student22, SubjectType.JAVA, 9);
+                webGroupGradebook.addRecord(student24, SubjectType.JAVA, 2);
+                webGroupGradebook.addRecord(student21, SubjectType.JAVA, 5);
+                webGroupGradebook.addRecord(student23, SubjectType.JAVA, 7);
+                webGroupGradebook.addRecord(student22, SubjectType.JAVA, 1);
+                webGroupGradebook.addRecord(student25, SubjectType.JAVA, 10);
+                webGroupGradebook.addRecord(student21, SubjectType.ENGLISH, 5);
+                webGroupGradebook.addRecord(student22, SubjectType.ENGLISH, 2);
+                webGroupGradebook.addRecord(student23, SubjectType.ENGLISH, 9);
+                webGroupGradebook.addRecord(student21, SubjectType.ENGLISH, 5);
+                webGroupGradebook.addRecord(student22, SubjectType.ENGLISH, 2);
+                webGroupGradebook.addRecord(student24, SubjectType.ENGLISH, 8);
+                webGroupGradebook.addRecord(student22, SubjectType.ENGLISH, 4);
+                webGroupGradebook.addRecord(student23, SubjectType.ENGLISH, 0);
+                webGroupGradebook.addRecord(student25, SubjectType.ENGLISH, 8);
             } catch (MarkException markException) {
                 markException.printStackTrace();
             }
@@ -84,18 +117,26 @@ public class Runner {
 //                emptyUniversityException.printStackTrace();
 //            }
 
-            Group javaDevelopmentGroup = new JavaDevelopmentGroup(students, gradebook);
-            TechnologyFaculty informationTechnologyFaculty = new TechnologyFaculty(Collections.singletonList(javaDevelopmentGroup));
+            Group javaDevelopmentGroup = new JavaDevelopmentGroup(javaStudents, javaGroupGradebook);
+            Group webDevelopmentGroup = new WebDevelopmentGroup(webStudents, webGroupGradebook);
+            List<Group> itGroups = new ArrayList<>();
+            itGroups.add(javaDevelopmentGroup);
+            itGroups.add(webDevelopmentGroup);
+            TechnologyFaculty informationTechnologyFaculty = new TechnologyFaculty(itGroups);
             List<Faculty> faculties = new ArrayList<>();
             faculties.add(informationTechnologyFaculty);
             University university = new University("Belorussian University", faculties);
 
-            gradebook.display();
-            Gradebook javaGradeBook = gradebook.getGradebok(SubjectType.JAVA);
+            javaGroupGradebook.display();
+            Gradebook javaGradeBook = javaGroupGradebook.getGradebok(SubjectType.JAVA);
             System.out.println("Return 'Java' gradebook:");
             javaGradeBook.display();
-            System.out.printf("Get average mark of student '%s': %.2f\n", student2.getStudentName(),
-                    university.getAverageMark(student2));
+
+            System.out.println(university.getGroup(FacultyType.INFORMATION_TECHNOLOGY, GroupType.JAVA_DEVELOPMENT));
+            System.out.println(javaDevelopmentGroup.getAverageMark(SubjectType.JAVA));
+
+            System.out.printf("Get average mark of student '%s': %.2f\n", student15.getStudentName(),
+                    university.getAverageMark(student15));
             System.out.printf("Get subject '%s' average mark in the faculty '%s' in group '%s': %.2f\n",
                     SubjectType.JAVA.getSubjectName(),
                     FacultyType.INFORMATION_TECHNOLOGY.getFacultyName(),

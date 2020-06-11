@@ -1,11 +1,14 @@
 package university.groups;
 
 import university.exceptions.EmptyGroupException;
+import university.faculties.Faculty;
+import university.faculties.FacultyType;
 import university.students.Student;
 import university.subjects.Gradebook;
 import university.subjects.Record;
 import university.subjects.SubjectType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Group {

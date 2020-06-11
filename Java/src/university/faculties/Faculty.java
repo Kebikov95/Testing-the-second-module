@@ -3,6 +3,7 @@ package university.faculties;
 import university.exceptions.EmptyFacultyException;
 import university.groups.Group;
 import university.groups.GroupType;
+import university.subjects.Gradebook;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,5 +27,13 @@ public abstract class Faculty {
 
     public List<Group> getGroups() {
         return groups;
+    }
+
+    public Group getGroup(GroupType type) {
+        Group returnGroup = null;
+        for (Group group : groups) {
+            if(group.getGroupType() == type)  returnGroup = group;
+        }
+        return returnGroup;
     }
 }

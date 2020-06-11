@@ -7,9 +7,9 @@ import university.faculties.FacultyType;
 import university.groups.Group;
 import university.groups.GroupType;
 import university.students.Student;
-import university.subjects.Gradebook;
 import university.subjects.SubjectType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class University {
@@ -23,6 +23,14 @@ public class University {
         } else {
             throw new EmptyUniversityException("The university must have faculties, faculties size must be more than 0 ", faculties.size());
         }
+    }
+
+    public Group getGroup(FacultyType facultyType, GroupType groupType) {
+        Group group = null;
+        for (Faculty faculty : faculties) {
+            if (faculty.getFacultyType() == facultyType) group = faculty.getGroup(groupType);
+        }
+        return group;
     }
 
     // The method for calculating the average score for all subjects of a particular student.
@@ -39,17 +47,9 @@ public class University {
     }
 
     // The method for calculating the average score for a specific subject in a specific group and at a specific faculty.
-    public float getAverageMark(SubjectType subject, FacultyType facultyType, GroupType groupType) throws Exception {
-        float averageMark = 0;
-        for (Faculty currentFaculty : faculties) {
-            for (Group currentGroup : currentFaculty.getGroups()) {
-                if (currentFaculty.getFacultyType() == facultyType &&
-                        currentGroup.getGroupType() == groupType) {
-                    averageMark = currentGroup.getAverageMark(subject);
-                }
-            }
-        }
-        return averageMark;
+    public float getAverageMark(SubjectType subjectType, FacultyType facultyType, GroupType groupType) throws Exception {
+        Group group = getGroup(facultyType, groupType);
+        return group.getAverageMark(subjectType);
     }
 
     // The method for calculating the average grade for a specific subject for the entire university.
