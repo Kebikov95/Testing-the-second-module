@@ -25,24 +25,22 @@ public class Gradebook {
         records.add(new Record(student, subjectType, mark));
     }
 
-    public Gradebook getGradebok(Student student) throws Exception {
-        return getGradebook((Object) student);
+    public int getRecordSize() {
+        return records.size();
     }
 
-    public Gradebook getGradebok(SubjectType type) throws Exception {
-        return getGradebook((Object) type);
-    }
-
-    private Gradebook getGradebook(Object object) throws Exception {
+    public Gradebook getGradebook(Student student) {
         List<Record> returnRecordList = new ArrayList<>();
         for (Record record : records) {
-            if (object instanceof SubjectType) {
-                if(record.getSubjectType() == object) returnRecordList.add(record);
-            } else if(object instanceof Student) {
-                if(object.equals(record.getStudent())) returnRecordList.add(record);
-            } else {
-                throw new Exception("A entered value type isn't expected.");
-            }
+            if (student.equals(record.getStudent())) returnRecordList.add(record);
+        }
+        return new Gradebook((returnRecordList));
+    }
+
+    public Gradebook getGradebook(SubjectType type) {
+        List<Record> returnRecordList = new ArrayList<>();
+        for (Record record : records) {
+            if(record.getSubjectType() == type) returnRecordList.add(record);
         }
         return new Gradebook(returnRecordList);
     }

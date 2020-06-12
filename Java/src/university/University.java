@@ -10,7 +10,7 @@ import university.subjects.SubjectType;
 
 import java.util.List;
 
-public class University {
+public class University implements AverageMarkable {
     private String universityName;
     private List<Faculty> faculties;
 
@@ -31,38 +31,30 @@ public class University {
         return returnFaculty;
     }
 
-    // The method for calculating the average score for all subjects of a particular student.
-    public float getAverageMark(Student student) throws Exception {
+    // The method for calculating the average grade for a specific student for the entire university.
+    @Override
+    public float getAverageMark(Student student) {
         float averageMark = 0;
         for (Faculty faculty : faculties) {
-            for (Group group : faculty.getGroups()) {
-                for (Student currentStudent:group.getStudentList()) {
-                    if (currentStudent.equals(student)) averageMark = group.getAverageMark(student);
-                }
-            }
+            averageMark += faculty.getAverageMark(student);
         }
         return averageMark;
     }
 
+    // The method for calculating the average grade for a specific subject for the entire university.
+    @Override
+    public float getAverageMark(SubjectType subjectType) {
+        float sumAverageMark = 0;
+        for (Faculty faculty : faculties) {
+            sumAverageMark += faculty.getAverageMark(subjectType);
+        }
+        return (float) sumAverageMark / faculties.size();
+    }
+
     // The method for calculating the average score for a specific subject in a specific group and at a specific faculty.
-    public float getAverageMark(SubjectType subjectType, FacultyType facultyType, GroupType groupType) throws Exception {
+    public float getAverageMark(SubjectType subjectType, FacultyType facultyType, GroupType groupType) {
         Faculty faculty = getFaculty(facultyType);
         Group group = faculty.getGroup(groupType);
         return group.getAverageMark(subjectType);
-    }
-
-    // The method for calculating the average grade for a specific subject for the entire university.
-    public float getAverageMark(SubjectType subject) throws Exception {
-        float averageMark = 0;
-        int count = 0;
-        for (Faculty currentFaculty : faculties) {
-            for (Group currentGroup : currentFaculty.getGroups()) {
-                if(currentGroup.getAverageMark(subject) > 0) {
-                    averageMark += currentGroup.getAverageMark(subject);
-                    count++;
-                }
-            }
-        }
-        return averageMark / count;
     }
 }

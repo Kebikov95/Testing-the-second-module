@@ -1,14 +1,15 @@
 package university.faculties;
 
+import university.AverageMarkable;
 import university.exceptions.EmptyFacultyException;
 import university.groups.Group;
 import university.groups.GroupType;
-import university.subjects.Gradebook;
+import university.students.Student;
+import university.subjects.SubjectType;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Faculty {
+public abstract class Faculty implements AverageMarkable {
     private FacultyType facultyType;
     private List<Group> groups;
 
@@ -35,5 +36,25 @@ public abstract class Faculty {
             if(group.getGroupType() == type)  returnGroup = group;
         }
         return returnGroup;
+    }
+
+    @Override
+    public float getAverageMark(Student student) {
+        float averageMark = 0;
+        for (Group group : groups) {
+            if(group.getStudentList().contains(student)) {
+                averageMark = group.getAverageMark(student);
+            }
+        }
+        return averageMark;
+    }
+
+    @Override
+    public float getAverageMark(SubjectType subjectType) {
+        float sum = 0;
+        for (Group group : groups) {
+            sum += group.getAverageMark(subjectType);
+        }
+        return (float) sum / groups.size();
     }
 }

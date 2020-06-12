@@ -1,16 +1,11 @@
 package university;
 
-import university.exceptions.EmptyFacultyException;
-import university.exceptions.EmptyGroupException;
-import university.exceptions.EmptyUniversityException;
 import university.exceptions.MarkException;
-import university.faculties.EconomyFaculty;
 import university.faculties.Faculty;
 import university.faculties.FacultyType;
 import university.faculties.TechnologyFaculty;
 import university.groups.Group;
 import university.groups.GroupType;
-import university.groups.economy.BusinessEconomicsGroup;
 import university.groups.technology.JavaDevelopmentGroup;
 import university.groups.technology.WebDevelopmentGroup;
 import university.students.Student;
@@ -72,15 +67,15 @@ public class Runner {
                 javaGroupGradebook.addRecord(student13, SubjectType.ENGLISH, 0);
                 javaGroupGradebook.addRecord(student15, SubjectType.ENGLISH, 4);
 
-                webGroupGradebook.addRecord(student21, SubjectType.JAVA, 8);
-                webGroupGradebook.addRecord(student22, SubjectType.JAVA, 7);
-                webGroupGradebook.addRecord(student23, SubjectType.JAVA, 8);
-                webGroupGradebook.addRecord(student22, SubjectType.JAVA, 9);
-                webGroupGradebook.addRecord(student24, SubjectType.JAVA, 2);
-                webGroupGradebook.addRecord(student21, SubjectType.JAVA, 5);
-                webGroupGradebook.addRecord(student23, SubjectType.JAVA, 7);
-                webGroupGradebook.addRecord(student22, SubjectType.JAVA, 1);
-                webGroupGradebook.addRecord(student25, SubjectType.JAVA, 10);
+//                webGroupGradebook.addRecord(student21, SubjectType.JAVA, 8);
+//                webGroupGradebook.addRecord(student22, SubjectType.JAVA, 7);
+//                webGroupGradebook.addRecord(student23, SubjectType.JAVA, 8);
+//                webGroupGradebook.addRecord(student22, SubjectType.JAVA, 9);
+//                webGroupGradebook.addRecord(student24, SubjectType.JAVA, 2);
+//                webGroupGradebook.addRecord(student21, SubjectType.JAVA, 5);
+//                webGroupGradebook.addRecord(student23, SubjectType.JAVA, 7);
+//                webGroupGradebook.addRecord(student22, SubjectType.JAVA, 1);
+//                webGroupGradebook.addRecord(student25, SubjectType.JAVA, 10);
                 webGroupGradebook.addRecord(student21, SubjectType.ENGLISH, 5);
                 webGroupGradebook.addRecord(student22, SubjectType.ENGLISH, 2);
                 webGroupGradebook.addRecord(student23, SubjectType.ENGLISH, 9);
@@ -129,14 +124,11 @@ public class Runner {
             faculties.add(informationTechnologyFaculty);
             University university = new University("Belorussian University", faculties);
 
-            javaGroupGradebook.display();
-            Gradebook javaGradeBook = javaGroupGradebook.getGradebok(SubjectType.JAVA);
-            System.out.println("Return 'Java' gradebook:");
-            javaGradeBook.display();
-            System.out.println(javaDevelopmentGroup.getAverageMark(SubjectType.JAVA));
+            System.out.println(webDevelopmentGroup.getAverageMark(SubjectType.JAVA));
+            System.out.println(webGroupGradebook.getGradebook(SubjectType.JAVA));
 
-            System.out.printf("Get average mark of student '%s': %.2f\n", student15.getStudentName(),
-                    university.getAverageMark(student15));
+            System.out.printf("Get average mark of student '%s': %.2f\n", student11.getStudentName(),
+                    university.getAverageMark(student11));
             System.out.printf("Get subject '%s' average mark in the faculty '%s' in group '%s': %.2f\n",
                     SubjectType.JAVA.getSubjectName(),
                     FacultyType.INFORMATION_TECHNOLOGY.getFacultyName(),
