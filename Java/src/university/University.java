@@ -48,7 +48,7 @@ public class University implements AverageMarkable {
         for (Faculty faculty : faculties) {
             sumAverageMark += faculty.getAverageMark(subjectType);
         }
-        return (float) sumAverageMark / faculties.size();
+        return sumAverageMark;
     }
 
     // The method for calculating the average score for a specific subject in a specific group and at a specific faculty.

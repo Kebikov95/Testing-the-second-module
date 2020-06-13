@@ -45,12 +45,6 @@ public class Gradebook {
         return new Gradebook(returnRecordList);
     }
 
-    public void display() {
-        for (Record record:records) {
-            System.out.println(record.getRecordLine());
-        }
-    }
-
     @Override
     public String toString() {
         return "Gradebook{" +

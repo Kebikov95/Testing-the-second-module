@@ -36,6 +36,15 @@ public abstract class Group implements AverageMarkable {
         return gradebook;
     }
 
+
+    public boolean isGroupHasSubject(SubjectType subjectType) {
+        List<Record> records = gradebook.getRecords();
+        for (Record record : records) {
+            return record.getSubjectType() == subjectType;
+        }
+        return false;
+    }
+
     @Override
     public float getAverageMark(Student student) {
         int sum = 0;
@@ -43,7 +52,7 @@ public abstract class Group implements AverageMarkable {
         for (Record record : gradebook.getRecords()) {
             sum += record.getMark();
         }
-        return (float) sum / gradebook.getRecordSize();
+        return gradebook.getRecordSize() == 0 ? 0 : (float) sum / gradebook.getRecordSize();
     }
 
     @Override
@@ -53,6 +62,6 @@ public abstract class Group implements AverageMarkable {
         for (Record record : gradebook.getRecords()) {
             sum += record.getMark();
         }
-        return (float) sum / gradebook.getRecordSize();
+        return gradebook.getRecordSize() == 0 ? 0 : (float) sum / gradebook.getRecordSize();
     }
 }

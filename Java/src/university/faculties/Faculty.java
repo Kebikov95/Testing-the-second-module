@@ -38,6 +38,14 @@ public abstract class Faculty implements AverageMarkable {
         return returnGroup;
     }
 
+    public int getQuantityGroupsHavingSubject(SubjectType subjectType) {
+        int count = 0;
+        for (Group group : groups) {
+            if(group.isGroupHasSubject(subjectType)) count++;
+        }
+        return count;
+    }
+
     @Override
     public float getAverageMark(Student student) {
         float averageMark = 0;
@@ -51,10 +59,11 @@ public abstract class Faculty implements AverageMarkable {
 
     @Override
     public float getAverageMark(SubjectType subjectType) {
-        float sum = 0;
+        float averageMark= 0;
         for (Group group : groups) {
-            sum += group.getAverageMark(subjectType);
+            averageMark += group.getAverageMark(subjectType);
         }
-        return (float) sum / groups.size();
+        return  getQuantityGroupsHavingSubject(subjectType) == 0
+                ? 0 : averageMark / getQuantityGroupsHavingSubject(subjectType);
     }
 }
