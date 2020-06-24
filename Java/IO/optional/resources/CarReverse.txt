@@ -1,0 +1,31 @@
+{ raC ssalc cilbup
+;eman gnirtS etavirp    
+;ledom gnirtS etavirp    
+;enigne elbuod etavirp    
+;srebmuNnoitartsiger gnirtS etavirp    
+
+{ )srebmuNnoitartsiger gnirtS ,enigne elbuod ,ledom gnirtS ,eman gnirtS(raC cilbup    
+;eman = eman.siht        
+;ledom = ledom.siht        
+;enigne = enigne.siht        
+;srebmuNnoitartsiger = srebmuNnoitartsiger.siht        
+}    
+
+{ )(ledoMedargpu diov cilbup    
+;)2.0 + enigne(enignEecalper        
+}    
+
+{ )enigne elbuod(enignEecalper diov etavirp    
+;enigne = enigne.siht        
+}    
+
+edirrevO@    
+{ )(gnirtSot gnirtS cilbup    
++ "{raC" nruter        
++ ''\' + eman + "'=eman"                
++ ''\' + ledom + "'=ledom ,"                
++ enigne + "=enigne ,"                
++ ''\' + srebmuNnoitartsiger + "'=srebmuNnoitartsiger ,"                
+;'}'                
+}    
+}
