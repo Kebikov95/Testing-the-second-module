@@ -6,12 +6,12 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class DirectoryManager {
-    private final String bufferPath = "resources\\buffer.txt";
     private String path;
     private String folderName;
     private ArrayList<String> folders;
     private ArrayList<String> files;
     private BufferedWriter bufferedWriter;
+    private final String bufferPath = "resources\\buffer.txt";
 
     public DirectoryManager(String path) throws IOException {
         this.path = path;
@@ -42,6 +42,7 @@ public class DirectoryManager {
         return bufferedWriter;
     }
 
+    // The method for writing list of files.
     public void write(String outputPath) throws IOException {
         if (new File(path).isFile()) {
             fileWriter(outputPath);
@@ -51,6 +52,7 @@ public class DirectoryManager {
         }
     }
 
+    // The method for writing directory list of files in buffer or output file.
     private void folderWriter(String outputPath) {
         try(BufferedReader br = new BufferedReader(new FileReader(bufferPath));
         BufferedWriter bw = new BufferedWriter(new FileWriter(outputPath))) {
@@ -66,6 +68,7 @@ public class DirectoryManager {
         }
     }
 
+    // The method for writing in file.
     private void fileWriter(String outputPath) {
         try(BufferedReader br = new BufferedReader(new FileReader(path));
             BufferedWriter bw = new BufferedWriter(new FileWriter(outputPath))) {
@@ -81,6 +84,7 @@ public class DirectoryManager {
         }
     }
 
+    // The method for reading files and folders.
     private void read() throws IOException {
         if (new File(path).isFile()) {
             fileRead();
@@ -93,6 +97,7 @@ public class DirectoryManager {
         }
     }
 
+    // The method for reading the folder.
     private void foldersReader(String path) throws IOException {
         Spaces spacesLine = new Spaces();
         File file = new File(path);
@@ -102,19 +107,18 @@ public class DirectoryManager {
             if (files[i].isFile()) {
                 spacesLine.writeSpaces();
                 bufferedWriter.write(spacesLine.getSpaces() + "|       " + files[i].getName() + '\n');
-//                System.out.println("|       " + files[i].getName());
             } else {
                 if(i != 0)
                     spacesLine.turnDownCount();
                 spacesLine.writeSpaces();
                 bufferedWriter.write(spacesLine.getSpaces() + "|-----" + files[i].getName() + '\n');
-//                System.out.println("|-----" + files[i].getName());
                 foldersReader(files[i].getAbsolutePath());
             }
         }
         bufferedWriter.flush();
     }
 
+    // The method for reading the file.
     private void fileRead() {
         try(BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
