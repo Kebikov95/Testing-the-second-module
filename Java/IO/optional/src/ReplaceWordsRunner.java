@@ -10,7 +10,7 @@ public class ReplaceWordsRunner {
             BufferedWriter bw = new BufferedWriter(new FileWriter("resources\\CarReplacer.txt"))) {
             String line;
             while((line = br.readLine()) != null) {
-                String replaceLine = line.replace("private", "public");
+                String replaceLine = replaceWords(line, "private", "public");
                 bw.write(replaceLine + '\n');
                 System.out.println(replaceLine);
             }
@@ -19,5 +19,15 @@ public class ReplaceWordsRunner {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String replaceWords(String line, String firstWord, String secondWord) {
+        String[] words = line.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            if(words[i].equals(firstWord)) {
+                words[i] = secondWord;
+            }
+        }
+        return String.join(" ", words);
     }
 }
