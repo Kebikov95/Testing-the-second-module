@@ -1,33 +1,36 @@
 package optional.airport;
 
-public class Runway implements Runnable {
-    private Airport airport;
-    private final int quantity = 5;
-    private static int counter = 0;
+import java.util.concurrent.Semaphore;
 
-    public Runway(Airport airport) {
-        this.airport = airport;
+public class Runway {
+    private Semaphore semaphore;
+
+    public Runway(int quantity) {
+        semaphore = new Semaphore(quantity);
+    }
+
+    public void acquire() throws InterruptedException {
+        semaphore.acquire();
+    }
+
+    public void release() {
+        semaphore.release();
+    }
+
+    public int availablePermits() {
+        return semaphore.availablePermits();
     }
 
     private void acceptThePlane() {
-        System.out.printf("The runway #%d has accepted the plane.\n", counter);
+        System.out.printf("The runway has accepted the plane.\n");
     }
 
     private void getFree() {
-        System.out.printf("The runway #%d is free.\n", counter);
+        System.out.printf("The runway is free.\n");
     }
 
-    private void increment() {
-        counter++;
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < quantity; i++) {
-            airport.put();
-            increment();
-            acceptThePlane();
-            getFree();
-        }
+    public void work() {
+        acceptThePlane();
+        getFree();
     }
 }

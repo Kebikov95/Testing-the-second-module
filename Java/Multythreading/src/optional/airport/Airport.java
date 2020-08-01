@@ -1,31 +1,24 @@
 package optional.airport;
 
-public class Airport {
-    private int quantityPlane = 10;
+import java.util.List;
 
-    public synchronized void get() {
-        while (quantityPlane < 1) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+public class Airport implements Runnable {
+    final private int runwayQuantity;
+    final private int planeQuantity;
+    private Runway runway;
+    private List<Plane> planes;
 
-        quantityPlane--;
-        notify();
+    public Airport(int runwayQuantity, int planeQuantity) {
+        this.runwayQuantity = runwayQuantity;
+        this.planeQuantity = planeQuantity;
+        this.runway = new Runway(runwayQuantity);
+        this.planes = Plane.createPlanes(runway, planeQuantity);
     }
 
-    public synchronized void put() {
-        while (quantityPlane >= 10) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    @Override
+    public void run() {
+        for (int i = 0; i < planes.size(); i++) {
+            new Thread(planes.get(i)).start();
         }
-
-        quantityPlane++;
-        notify();
     }
 }

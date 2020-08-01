@@ -1,16 +1,28 @@
 package optional.airport;
 
-public class Plane implements Runnable {
-    private Airport airport;
-    private final int quantity = 10;
-    private static int counter = 0;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Plane(Airport airport) {
-        this.airport = airport;
+public class Plane implements Runnable {
+    private Runway runway;
+    private String name;
+
+    Plane(Runway runway, String name) {
+        this.runway = runway;
+        this.name = name;
+    }
+
+    public static List<Plane> createPlanes(Runway runway, int quantity) {
+        List<Plane> planes = new ArrayList<>();
+        for (int i = 0; i < quantity; i++) {
+            Plane plane = new Plane(runway, "Plane " + i);
+            planes.add(plane);
+        }
+        return planes;
     }
 
     private void enteringTheRunway() {
-        System.out.printf("The plane #%d began entering the runway.\n", counter);
+        System.out.printf("The %s began entering the runway.\n", name);
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -19,20 +31,19 @@ public class Plane implements Runnable {
     }
 
     private void takeOff() {
-        System.out.printf("The plane #%d took off.\n", counter);
-    }
-
-    private void increment() {
-        counter++;
+        System.out.printf("The %s took off.\n", name);
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < quantity; i++) {
-            airport.get();
-            increment();
+        try {
+            runway.acquire();
             enteringTheRunway();
             takeOff();
+            runway.work();
+            runway.release();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
