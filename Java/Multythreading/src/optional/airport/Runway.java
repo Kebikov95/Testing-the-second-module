@@ -6,6 +6,14 @@ public class Runway {
     private Semaphore semaphore;
 
     public Runway(int quantity) {
+        if(quantity <= 0) {
+            try {
+                throw new Exception("The number of permissions allowed" +
+                        " to the resource must be greater than zero.");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         semaphore = new Semaphore(quantity);
     }
 

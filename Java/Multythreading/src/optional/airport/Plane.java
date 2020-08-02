@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Plane implements Runnable {
+    private final static int WAITING_TIME = 3000;
     private Runway runway;
     private String name;
 
@@ -24,7 +25,7 @@ public class Plane implements Runnable {
     private void enteringTheRunway() {
         System.out.printf("The %s began entering the runway.\n", name);
         try {
-            Thread.sleep(3000);
+            Thread.sleep(WAITING_TIME);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
