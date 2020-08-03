@@ -67,11 +67,11 @@ public class Car implements Runnable {
 
     @Override
     public void run() {
-        if(parking.availablePermits() > 0) {
+        if (parking.availablePermits() > 0) {
             this.work();
         } else {
             this.waiting();
-            if(parking.availablePermits() > 0) {
+            if (parking.availablePermits() > 0) {
                 this.work();
             } else {
                 this.leftAfterWaiting();

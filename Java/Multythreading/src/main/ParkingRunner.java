@@ -3,9 +3,9 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test {
+public class ParkingRunner {
     final static int PARKING_PLACES_QUANTITY = 5;
-    final static int CARS_QUANTITY = 15;
+    final static int CARS_QUANTITY = 10;
 
     public static void main(String[] args) {
         List<Car> cars = new ArrayList<>();
