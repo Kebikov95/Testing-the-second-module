@@ -11,13 +11,13 @@ import pastebinTests.structure.enums.homePage.PasteExposureHomePageEnum;
 import pastebinTests.structure.enums.homePage.SyntaxHighlightingHomePageEnum;
 import pastebinTests.structure.enums.resultPage.PasteExposureResultPageEnum;
 import pastebinTests.structure.enums.resultPage.SyntaxHighlightingResultPageEnum;
-import pastebinTests.tests.bringItOn.page.SeleniumPastebinHQHomePageAbstractPO;
-import pastebinTests.tests.bringItOn.page.SeleniumPastebinHQResultPageAbstractPO;
+import pastebinTests.tests.bringItOn.page.PastebinHQHomePageAbstractPO;
+import pastebinTests.tests.bringItOn.page.PastebinHQResultPageAbstractPO;
 
-public class WebDriverSeleniumPastebinHQResultPageAbstractPOTest {
+public class WebDriverPastebinHQResultPageAbstractPOTest {
     private WebDriver driver;
-    private SeleniumPastebinHQHomePageAbstractPO homePage;
-    private SeleniumPastebinHQResultPageAbstractPO resultPage;
+    private PastebinHQHomePageAbstractPO homePage;
+    private PastebinHQResultPageAbstractPO resultPage;
     private WebElement searchCode;
     private WebElement searchTitle;
     private WebElement searchSyntax;
@@ -28,7 +28,7 @@ public class WebDriverSeleniumPastebinHQResultPageAbstractPOTest {
         driver = new ChromeDriver();
         driver.get("https://pastebin.com");
         driver.manage().window().maximize();
-        homePage = new SeleniumPastebinHQHomePageAbstractPO(driver);
+        homePage = new PastebinHQHomePageAbstractPO(driver);
     }
 
     @Test(description = "Test with params:" +
@@ -45,9 +45,6 @@ public class WebDriverSeleniumPastebinHQResultPageAbstractPOTest {
         Assert.assertEquals(searchCode.getText(), "Hello from WebDriver");
         Assert.assertEquals(searchTitle.getText(), "helloweb");
         Assert.assertEquals(searchPasteExposure.getText(), PasteExposureResultPageEnum.TEN_MINUTES.getName());
-        System.out.println(searchCode.getText());
-        System.out.println(searchTitle.getText());
-        System.out.println(searchPasteExposure.getText());
     }
 
     @Test(description = "Test with params:" +

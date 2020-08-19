@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SeleniumPastebinHQResultPageAbstractPO extends AbstractPage {
+public class PastebinHQResultPageAbstractPO extends AbstractPage {
     private String code;
     private String title;
     private PasteExposureHomePageEnum exposure;
@@ -20,7 +20,7 @@ public class SeleniumPastebinHQResultPageAbstractPO extends AbstractPage {
     @FindBy(xpath = "//textarea[@class=\"textarea\"]")
     private WebElement textareaCode;
 
-    protected SeleniumPastebinHQResultPageAbstractPO(WebDriver driver, String code, String title,
+    protected PastebinHQResultPageAbstractPO(WebDriver driver, String code, String title,
                                                      PasteExposureHomePageEnum exposure) {
         super(driver);
         this.code = code;

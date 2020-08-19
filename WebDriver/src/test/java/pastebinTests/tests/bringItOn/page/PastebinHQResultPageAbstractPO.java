@@ -10,7 +10,7 @@ import pastebinTests.structure.abstractPageFactory.AbstractPage;
 import pastebinTests.structure.enums.homePage.PasteExposureHomePageEnum;
 import pastebinTests.structure.enums.homePage.SyntaxHighlightingHomePageEnum;
 
-public class SeleniumPastebinHQResultPageAbstractPO extends AbstractPage {
+public class PastebinHQResultPageAbstractPO extends AbstractPage {
     private String code;
     private String title;
     private SyntaxHighlightingHomePageEnum syntax;
@@ -27,17 +27,17 @@ public class SeleniumPastebinHQResultPageAbstractPO extends AbstractPage {
     @FindBy(xpath = "//div[@class=\"left\"]/a")
     private WebElement syntaxType;
 
-    public SeleniumPastebinHQResultPageAbstractPO(WebDriver driver, String code, String title,
-                                                     PasteExposureHomePageEnum exposure) {
+    public PastebinHQResultPageAbstractPO(WebDriver driver, String code, String title,
+                                          PasteExposureHomePageEnum exposure) {
         super(driver);
         this.code = code;
         this.title = title;
         this.exposure = exposure;
     }
 
-    public SeleniumPastebinHQResultPageAbstractPO(WebDriver driver, String code, String title,
-                                                  SyntaxHighlightingHomePageEnum syntax,
-                                                  PasteExposureHomePageEnum exposure) {
+    public PastebinHQResultPageAbstractPO(WebDriver driver, String code, String title,
+                                          SyntaxHighlightingHomePageEnum syntax,
+                                          PasteExposureHomePageEnum exposure) {
         super(driver);
         this.code = code;
         this.title = title;

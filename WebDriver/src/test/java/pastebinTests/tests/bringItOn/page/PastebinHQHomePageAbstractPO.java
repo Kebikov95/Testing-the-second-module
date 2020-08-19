@@ -10,14 +10,14 @@ import org.openqa.selenium.support.FindBy;
 import pastebinTests.structure.enums.homePage.PasteExposureHomePageEnum;
 import pastebinTests.structure.enums.homePage.SyntaxHighlightingHomePageEnum;
 
-public class SeleniumPastebinHQHomePageAbstractPO extends AbstractPage {
+public class PastebinHQHomePageAbstractPO extends AbstractPage {
     private final String HOME_PAGE = "https://pastebin.com";
 
     @FindBy(xpath = "//textarea[@id='postform-text']")
     private WebElement codeTextArea;
-    @FindBy(xpath = "//span[@id=\"select2-postform-format-container\"]")
+    @FindBy(xpath = "//span[@id='select2-postform-format-container']")
     private WebElement syntaxHighlightingSelect;
-    @FindBy(xpath = "(//ul[@id=\"select2-postform-format-results\"]//li[text()='Bash'])[1]")
+    @FindBy(xpath = "(//ul[@id='select2-postform-format-results']//li[text()='Bash'])[1]")
     private WebElement syntaxHighlightingOption;
     @FindBy(xpath = "//label[text()='Paste Expiration:']/following-sibling::div")
     private WebElement pasteExpirationSelect;
@@ -28,7 +28,7 @@ public class SeleniumPastebinHQHomePageAbstractPO extends AbstractPage {
     @FindBy(xpath = "//button[text()='Create New Paste']")
     private WebElement createNewPasteButton;
 
-    public SeleniumPastebinHQHomePageAbstractPO(WebDriver driver) {
+    public PastebinHQHomePageAbstractPO(WebDriver driver) {
         super(driver);
     }
 
@@ -39,7 +39,7 @@ public class SeleniumPastebinHQHomePageAbstractPO extends AbstractPage {
         return this;
     }
 
-    public SeleniumPastebinHQResultPageAbstractPO searchForTerms(String code, String title, PasteExposureHomePageEnum exposure) {
+    public PastebinHQResultPageAbstractPO searchForTerms(String code, String title, PasteExposureHomePageEnum exposure) {
         codeTextArea.sendKeys("Hello from WebDriver");
         titleInput.sendKeys("helloweb");
         pasteExpirationSelect.click();
@@ -56,12 +56,12 @@ public class SeleniumPastebinHQHomePageAbstractPO extends AbstractPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return new SeleniumPastebinHQResultPageAbstractPO(driver, code, title, exposure);
+        return new PastebinHQResultPageAbstractPO(driver, code, title, exposure);
     }
 
-    public SeleniumPastebinHQResultPageAbstractPO searchForTerms(String code, String title,
-                                                                 SyntaxHighlightingHomePageEnum syntax,
-                                                                 PasteExposureHomePageEnum expiration) {
+    public PastebinHQResultPageAbstractPO searchForTerms(String code, String title,
+                                                         SyntaxHighlightingHomePageEnum syntax,
+                                                         PasteExposureHomePageEnum expiration) {
         codeTextArea.sendKeys(code);
         titleInput.sendKeys(title);
         syntaxHighlightingSelect.click();
@@ -79,6 +79,6 @@ public class SeleniumPastebinHQHomePageAbstractPO extends AbstractPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return new SeleniumPastebinHQResultPageAbstractPO(driver, code, title, syntax, expiration);
+        return new PastebinHQResultPageAbstractPO(driver, code, title, syntax, expiration);
     }
 }
