@@ -1,7 +1,6 @@
 package pastebinTests.tests.bringItOn.test;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -18,10 +17,6 @@ public class WebDriverPastebinResultPageTest {
     private WebDriver driver;
     private PastebinHomePage homePage;
     private PastebinResultPage resultPage;
-    private WebElement searchCode;
-    private WebElement searchTitle;
-    private WebElement searchSyntax;
-    private WebElement searchPasteExposure;
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetup() {
@@ -38,13 +33,10 @@ public class WebDriverPastebinResultPageTest {
     public void commonSearchTermResultAreEqualWithoutSyntax() {
         resultPage = homePage.searchForTerms("Hello from WebDriver","helloweb",
                 PasteExposureHomePageEnum.TEN_MINUTES);
-        searchCode = resultPage.findTextareaCode();
-        searchTitle = resultPage.findTitle();
-        searchPasteExposure = resultPage.findExposureTime();
 
-        Assert.assertEquals(searchCode.getText(), "Hello from WebDriver");
-        Assert.assertEquals(searchTitle.getText(), "helloweb");
-        Assert.assertEquals(searchPasteExposure.getText(), PasteExposureResultPageEnum.TEN_MINUTES.getName());
+        Assert.assertEquals(resultPage.findTextareaCode().getText(), "Hello from WebDriver");
+        Assert.assertEquals(resultPage.findTitle().getText(), "helloweb");
+        Assert.assertEquals(resultPage.findExposureTime().getText(), PasteExposureResultPageEnum.TEN_MINUTES.getName());
     }
 
     @Test(description = "Test with params:" +
@@ -63,22 +55,14 @@ public class WebDriverPastebinResultPageTest {
                 "how to gain dominance among developers",
                 SyntaxHighlightingHomePageEnum.BASH,
                 PasteExposureHomePageEnum.TEN_MINUTES);
-        searchCode = resultPage.findTextareaCode();
-        searchTitle = resultPage.findTitle();
-        searchSyntax = resultPage.findSyntaxType();
-        searchPasteExposure = resultPage.findExposureTime();
 
-        Assert.assertEquals(searchCode.getText(),
+        Assert.assertEquals(resultPage.findTextareaCode().getText(),
                 "git config --global user.name  \"New Sheriff in Town\"\n" +
                         "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
                         "git push origin master --force");
-        Assert.assertEquals(searchTitle.getText(), "how to gain dominance among developers");
-        Assert.assertEquals(searchPasteExposure.getText(), PasteExposureResultPageEnum.TEN_MINUTES.getName());
-        Assert.assertEquals(searchSyntax.getText(), SyntaxHighlightingResultPageEnum.BASH.getName());
-        System.out.println(searchCode.getText());
-        System.out.println(searchTitle.getText());
-        System.out.println(searchPasteExposure.getText());
-        System.out.println(searchSyntax.getText());
+        Assert.assertEquals(resultPage.findTitle().getText(), "how to gain dominance among developers");
+        Assert.assertEquals(resultPage.findExposureTime().getText(), PasteExposureResultPageEnum.TEN_MINUTES.getName());
+        Assert.assertEquals(resultPage.findSyntaxType().getText(), SyntaxHighlightingResultPageEnum.BASH.getName());
     }
 
     @AfterMethod(alwaysRun = true)

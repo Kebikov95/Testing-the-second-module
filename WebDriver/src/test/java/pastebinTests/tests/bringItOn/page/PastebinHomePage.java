@@ -13,6 +13,7 @@ import pastebinTests.structure.enums.homePage.SyntaxHighlightingHomePageEnum;
 
 public class PastebinHomePage extends AbstractPage {
     private final String HOME_PAGE = "https://pastebin.com";
+    private String optionPath = "//span[@class='select2-results']//li[text()='%s']";
 
     @FindBy(xpath = "//textarea[@id='postform-text']")
     private WebElement codeTextArea;
@@ -45,10 +46,9 @@ public class PastebinHomePage extends AbstractPage {
         codeTextArea.sendKeys("Hello from WebDriver");
         titleInput.sendKeys("helloweb");
         pasteExpirationSelect.click();
-        pasteExpirationOption.click();
-//        pasteExpirationOption.findElement(By.xpath(String.format(pasteExpirationOptionXpath, exposure.getTimeName()))).click();
+        pasteExpirationOption.findElement(By.xpath(String.format(optionPath, exposure.getName()))).click();
         createNewPasteButton.submit();
-        return new PastebinResultPage(driver, code, title, exposure);
+        return new PastebinResultPage(driver);
     }
 
     public PastebinResultPage searchForTerms(String code, String title,
@@ -61,6 +61,6 @@ public class PastebinHomePage extends AbstractPage {
         pasteExpirationSelect.click();
         pasteExpirationOption.click();
         createNewPasteButton.submit();
-        return new PastebinResultPage(driver, code, title, syntax, expiration);
+        return new PastebinResultPage(driver);
     }
 }

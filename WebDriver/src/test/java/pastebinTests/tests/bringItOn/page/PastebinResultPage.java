@@ -1,21 +1,12 @@
 package pastebinTests.tests.bringItOn.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pastebinTests.structure.abstractPageFactory.AbstractPage;
-import pastebinTests.structure.enums.homePage.PasteExposureHomePageEnum;
-import pastebinTests.structure.enums.homePage.SyntaxHighlightingHomePageEnum;
 
 public class PastebinResultPage extends AbstractPage {
-    private String code;
-    private String title;
-    private SyntaxHighlightingHomePageEnum syntax;
-    private PasteExposureHomePageEnum exposure;
 
     @FindBy(xpath = "//div[@class=\"info-bar\"]//h1")
     private WebElement infoBarTitle;
@@ -28,24 +19,10 @@ public class PastebinResultPage extends AbstractPage {
     @FindBy(xpath = "//div[@class=\"left\"]/a")
     private WebElement syntaxType;
 
-    public PastebinResultPage(WebDriver driver, String code, String title,
-                              PasteExposureHomePageEnum exposure) {
+    public PastebinResultPage(WebDriver driver) {
         super(driver);
-        this.code = code;
-        this.title = title;
-        this.exposure = exposure;
         PageFactory.initElements(driver, this);
-    }
-
-    public PastebinResultPage(WebDriver driver, String code, String title,
-                              SyntaxHighlightingHomePageEnum syntax,
-                              PasteExposureHomePageEnum exposure) {
-        super(driver);
-        this.code = code;
-        this.title = title;
-        this.syntax = syntax;
-        this.exposure = exposure;
-        PageFactory.initElements(driver, this);
+        waitingForItemToLoad("//div[@class='info-bar']//h1");
     }
 
     public WebElement findTitle() {
