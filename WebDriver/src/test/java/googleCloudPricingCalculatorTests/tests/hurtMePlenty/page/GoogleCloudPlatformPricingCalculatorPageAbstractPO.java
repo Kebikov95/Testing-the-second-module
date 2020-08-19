@@ -39,7 +39,7 @@ public class GoogleCloudPlatformPricingCalculatorPageAbstractPO extends Abstract
 
     protected GoogleCloudPlatformPricingCalculatorPageAbstractPO(WebDriver driver) {
         super(driver);
-        waitingForItemToLoad("(//*[@id='mainForm']//div/div[text()='Compute Engine'])[1]");
+        PageFactory.initElements(driver, this);
     }
 
     protected AbstractPage openPage() {

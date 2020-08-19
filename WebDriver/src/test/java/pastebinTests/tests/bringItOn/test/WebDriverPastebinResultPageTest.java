@@ -11,13 +11,13 @@ import pastebinTests.structure.enums.homePage.PasteExposureHomePageEnum;
 import pastebinTests.structure.enums.homePage.SyntaxHighlightingHomePageEnum;
 import pastebinTests.structure.enums.resultPage.PasteExposureResultPageEnum;
 import pastebinTests.structure.enums.resultPage.SyntaxHighlightingResultPageEnum;
-import pastebinTests.tests.bringItOn.page.PastebinHQHomePageAbstractPO;
-import pastebinTests.tests.bringItOn.page.PastebinHQResultPageAbstractPO;
+import pastebinTests.tests.bringItOn.page.PastebinHomePage;
+import pastebinTests.tests.bringItOn.page.PastebinResultPage;
 
-public class WebDriverPastebinHQResultPageAbstractPOTest {
+public class WebDriverPastebinResultPageTest {
     private WebDriver driver;
-    private PastebinHQHomePageAbstractPO homePage;
-    private PastebinHQResultPageAbstractPO resultPage;
+    private PastebinHomePage homePage;
+    private PastebinResultPage resultPage;
     private WebElement searchCode;
     private WebElement searchTitle;
     private WebElement searchSyntax;
@@ -28,7 +28,7 @@ public class WebDriverPastebinHQResultPageAbstractPOTest {
         driver = new ChromeDriver();
         driver.get("https://pastebin.com");
         driver.manage().window().maximize();
-        homePage = new PastebinHQHomePageAbstractPO(driver);
+        homePage = new PastebinHomePage(driver);
     }
 
     @Test(description = "Test with params:" +

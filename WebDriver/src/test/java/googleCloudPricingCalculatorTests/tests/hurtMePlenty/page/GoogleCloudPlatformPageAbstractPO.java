@@ -17,7 +17,7 @@ public class GoogleCloudPlatformPageAbstractPO extends AbstractPage {
 
     public GoogleCloudPlatformPageAbstractPO(WebDriver driver) {
         super(driver);
-//        PageFactory.initElements(driver, this);
+        PageFactory.initElements(driver, this);
     }
 
     protected AbstractPage openPage() {

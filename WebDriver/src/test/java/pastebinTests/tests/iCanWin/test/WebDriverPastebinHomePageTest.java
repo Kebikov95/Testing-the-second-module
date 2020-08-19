@@ -2,30 +2,26 @@ package pastebinTests.tests.iCanWin.test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pastebinTests.structure.enums.homePage.PasteExposureHomePageEnum;
-import pastebinTests.tests.bringItOn.page.PastebinHQHomePageAbstractPO;
-import pastebinTests.tests.bringItOn.page.PastebinHQResultPageAbstractPO;
+import pastebinTests.tests.bringItOn.page.PastebinHomePage;
+import pastebinTests.tests.bringItOn.page.PastebinResultPage;
 
-public class WebDriverPastebinHQHomePageAbstractPOTest {
+public class WebDriverPastebinHomePageTest {
     private WebDriver driver;
-    private PastebinHQHomePageAbstractPO homePage;
-    private PastebinHQResultPageAbstractPO resultPage;
-    private WebElement searchCode;
-    private WebElement searchTitle;
-    private WebElement searchPasteExposure;
+    private PastebinHomePage homePage;
+    private PastebinResultPage resultPage;
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetup() {
         driver = new ChromeDriver();
         driver.get("https://pastebin.com");
         driver.manage().window().maximize();
-        homePage = new PastebinHQHomePageAbstractPO(driver);
+        homePage = new PastebinHomePage(driver);
     }
 
     @Test
