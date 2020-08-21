@@ -18,7 +18,7 @@ public abstract class AbstractPage {
 
     protected abstract AbstractPage openPage();
 
-    protected void waitingForItemToLoad(String path) {
+    public void waitingForItemToLoad(String path) {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.presenceOfElementLocated(
                         By.xpath(path)));

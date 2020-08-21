@@ -1,6 +1,6 @@
 package googleCloudPricingCalculatorTests.tests.hurtMePlenty.test;
 
-import googleCloudPricingCalculatorTests.tests.hurtMePlenty.page.GoogleCloudPlatformPageAbstractPO;
+import googleCloudPricingCalculatorTests.tests.hurtMePlenty.page.GoogleCloudPlatformPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,16 +10,16 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class WebDriverGoogleCloudPlatformPageAbstractPOTest {
+public class WebDriverGoogleCloudPlatformPageTest {
     private WebDriver driver;
-    private GoogleCloudPlatformPageAbstractPO page;
+    private GoogleCloudPlatformPage page;
 
     @BeforeTest(alwaysRun = true)
     public void browserSetup() {
         driver = new ChromeDriver();
         driver.get("https://cloud.google.com");
         driver.manage().window().maximize();
-        page = new GoogleCloudPlatformPageAbstractPO(driver);
+        page = new GoogleCloudPlatformPage(driver);
     }
 
     @Test

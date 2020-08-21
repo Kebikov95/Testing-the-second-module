@@ -9,13 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class GoogleCloudPlatformPageAbstractPO extends AbstractPage {
+public class GoogleCloudPlatformPage extends AbstractPage {
     private final String HOME_PAGE = "https://cloud.google.com";
 
     @FindBy(xpath = "//input[@name='q']")
     private WebElement searchInput;
 
-    public GoogleCloudPlatformPageAbstractPO(WebDriver driver) {
+    public GoogleCloudPlatformPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -26,14 +26,14 @@ public class GoogleCloudPlatformPageAbstractPO extends AbstractPage {
         return this;
     }
 
-    public GoogleCloudPlatformPricingCalculatorPageAbstractPO openGoogleCloudPlatformPricingCalculator() {
+    public GoogleCloudPlatformPricingCalculatorPage openGoogleCloudPlatformPricingCalculator() {
         searchInput.click();
         searchInput.sendKeys("Google Cloud Platform Pricing Calculator");
         searchInput.submit();
-        waitingForItemToLoad("//div[@class=\"gs-webResult gs-result\"]//a[@class='gs-title']");
+        waitingForItemToLoad("//div[@class='gs-webResult gs-result']//a[@class='gs-title']");
         List<WebElement> findElements = driver
-                .findElements(By.xpath("//div[@class=\"gs-webResult gs-result\"]//a[@class='gs-title']"));
+                .findElements(By.xpath("//div[@class='gs-webResult gs-result']//a[@class='gs-title']"));
         findElements.get(0).click();
-        return new GoogleCloudPlatformPricingCalculatorPageAbstractPO(driver);
+        return new GoogleCloudPlatformPricingCalculatorPage(driver);
     }
 }

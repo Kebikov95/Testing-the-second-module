@@ -34,20 +34,31 @@ public class Main {
         findElements.get(0).click();
 
         // google cloud price calculator
-        Thread.sleep(10000);
+        Thread.sleep(3000);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='/products/" +
+                "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']")));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@id='myFrame']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.presenceOfElementLocated(
                         By.xpath("(//div[@class='name ng-binding'][text()='Compute Engine'])[1]")));
         driver.findElement(By.xpath("(//div[@class='name ng-binding'][text()='Compute Engine'])[1]")).click();
         driver.findElement(By.xpath("//input[@id='input_61']")).click();
         driver.findElement(By.xpath("//input[@id='input_61']")).sendKeys("4");
-        driver.findElement(By.xpath(getMachineTypePath(MachineTypeEnum.N1_STANDARD_8))).click();
+        driver.findElement(By.xpath("//md-select-value[@id='select_value_label_58']")).click();
+        driver.findElement(By.xpath("//md-option[@id='select_option_228']/div[contains(text(), 'n1-standard-8 (vCPUs: 8, RAM: 30GB)')]")).click();
         driver.findElement(By.xpath("(//div[contains(text(), 'Add GPUs')]/..)[1]")).click();
-        driver.findElement(By.xpath(getNumberOfCpuPath(NumberOfGpusEnum.ONE))).click();
-        driver.findElement(By.xpath(getCpuTypePath(GpuTypeEnum.NVIDIA_TESLA_V100))).click();
-        driver.findElement(By.xpath(getLocalSsdEnum(LocalSsdEnum.TWO))).click();
-        driver.findElement(By.xpath(getDataCenterLocationEnum(DataCenterLocationEnum.FRANKFURT))).click();
-        driver.findElement(By.xpath(getCommittedUsageEnum(CommittedUsageEnum.ONE_YEAR))).click();
+        driver.findElement(By.xpath("//md-select-value[@id='select_value_label_350']")).click();
+        driver.findElement(By.xpath("//md-option[@id='select_option_357']/div[contains(text(), '1')]")).click();
+        driver.findElement(By.xpath("//md-select-value[@id='select_value_label_351']")).click();
+        driver.findElement(By.xpath("//md-option[@id='select_option_364']/div[contains(text(), 'NVIDIA Tesla V100')]")).click();
+        driver.findElement(By.xpath("//md-select-value[@id='select_value_label_184']")).click();
+        driver.findElement(By.xpath("//md-option[@id='select_option_249']/div[contains(text(), '2x375 GB')]")).click();
+        driver.findElement(By.xpath("//md-select-value[@id='select_value_label_59']")).click();
+        driver.findElement(By.xpath("//md-option[@id='select_option_196']/div[contains(text(), 'Frankfurt (europe-west3)')]")).click();
+        driver.findElement(By.xpath("//md-select-value[@id='select_value_label_60']")).click();
+        driver.findElement(By.xpath("//md-option[@id='select_option_93']/div[text()='1 Year']")).click();
         driver.findElement(By.xpath("//button[text()='Add to Estimate']")).click();
 
         driver.quit();
