@@ -20,7 +20,6 @@ public abstract class AbstractPage {
 
     public void waitingForItemToLoad(String path) {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(
-                        By.xpath(path)));
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(path)));
     }
 }

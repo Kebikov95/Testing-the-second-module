@@ -1,20 +1,28 @@
-package googleCloudPricingCalculatorTests.tests.hurtMePlenty.test;
+package googleCloudPricingCalculatorTests.tests.hardcore.test;
 
 import googleCloudPricingCalculatorTests.structure.enums.*;
-import googleCloudPricingCalculatorTests.tests.hurtMePlenty.page.GoogleCloudPlatformPage;
-import googleCloudPricingCalculatorTests.tests.hurtMePlenty.page.GoogleCloudPlatformPricingCalculatorPage;
+import googleCloudPricingCalculatorTests.tests.hardcore.page.GoogleCloudPlatformPage;
+import googleCloudPricingCalculatorTests.tests.hardcore.page.GoogleCloudPlatformPricingCalculatorPage;
+import googleCloudPricingCalculatorTests.tests.hardcore.page.TenMinutesMailPage;
+import googleCloudPricingCalculatorTests.tests.hardcore.page.TenMinutesMailWithTotalCostPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+
 public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
     private WebDriver driver;
     private GoogleCloudPlatformPage homePage;
     private GoogleCloudPlatformPricingCalculatorPage resultPage;
+    private ArrayList<String> tabs;
+    private final int WAIT_TIMEOUT_SECONDS = 10;
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetup() {
@@ -32,13 +40,11 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
         resultPage.numberOfInstancesInputSendKeys(4);
         resultPage.machineTypeClick();
         machineTypeOptionClick(MachineTypeEnum.N1_STANDARD_8);
-
         resultPage.addGpusCheckboxClick();
         resultPage.numbersOfGpusClick();
         numbersOfGpusOptionClick(NumberOfGpusEnum.ONE);
         resultPage.gpuTypeClick();
         gpuTypeOptionClick(GpuTypeEnum.NVIDIA_TESLA_V100);
-
         resultPage.localSddClick();
         localSddOptionClick(LocalSsdEnum.TWO);
         resultPage.dataCenterLocationClick();
@@ -46,11 +52,6 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
         resultPage.committedUsageClick();
         committedUsageOptionClick(CommittedUsageEnum.ONE_YEAR);
         resultPage.addToEstimateClick();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         Assert.assertEquals(resultPage
                 .findNumberOfInstanceResult()
@@ -73,6 +74,20 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
         Assert.assertEquals(resultPage
                 .findEstimatedComponentCostResult()
                 .getText().trim(),"Estimated Component Cost: USD 1,082.77 per 1 month");
+
+        TenMinutesMailPage mailPage = new TenMinutesMailPage(driver);
+        mailPage.openPageInNewTab();
+        tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        String email = mailPage.getMailAddress();
+        driver.switchTo().window(tabs.get(0));
+        resultPage.sendEmailWithComponentCost(email);
+
+        tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        TenMinutesMailWithTotalCostPage mailPageWithPriceCost = mailPage.openTenMinutesMailWithTotalCostPage();
+        Assert.assertEquals(mailPageWithPriceCost.getEstimatedMonthlyCostElement()
+                .getText().trim(), "USD 1,082.77");
     }
 
     @AfterMethod(alwaysRun = true)
@@ -106,7 +121,12 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
     }
 
     public void optionClick(String path) {
-        resultPage.waitingForItemToLoad(path);
+        waitingForItemToLoad(path);
         driver.findElement(By.xpath(path)).click();
+    }
+
+    public void waitingForItemToLoad(String path) {
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(path)));
     }
 }

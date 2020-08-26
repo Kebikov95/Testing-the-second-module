@@ -1,4 +1,4 @@
-package googleCloudPricingCalculatorTests.tests.hurtMePlenty.page;
+package googleCloudPricingCalculatorTests.tests.hardcore.page;
 
 import googleCloudPricingCalculatorTests.structure.abstractPageFactory.AbstractPage;
 import org.openqa.selenium.By;
@@ -57,24 +57,34 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     @FindBy(xpath = "//md-list[@class='cartitem ng-scope']//div[@class='md-list-item-text']")
     private WebElement estimatedComponentCostResult;
 
+    @FindBy(xpath = "//button[contains(text(), 'Email Estimate')]")
+    private WebElement emailEstimateButton;
+    @FindBy(xpath = "(//input[@name='description'])[3]")
+    private WebElement emailInput;
+    @FindBy(xpath = "//md-dialog-actions//button[contains(text(), 'Send Email')]")
+    private WebElement sendEmailButton;
+
     protected GoogleCloudPlatformPricingCalculatorPage(WebDriver driver) {
         super(driver);
         waiter = new WebDriverWait(driver, 10);
-      waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='/products/" +
-                "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']")));
-        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@id='myFrame']")));
-        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
+        frameWaiting();
         PageFactory.initElements(driver, this);
     }
 
-//    private WebDriverWait frameWaiterToBeAvailable() {
-//        waiter = new WebDriverWait(driver, 10);
-//        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='/products/" +
-//                "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']")));
-//        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@id='myFrame']")));
-//        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
-//        return waiter;
-//    }
+    private void frameWaiting() {
+        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='/products/" +
+                "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']")));
+        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@id='myFrame']")));
+        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
+    }
+
+    public TenMinutesMailPage sendEmailWithComponentCost(String email) {
+        frameWaiting();
+        emailEstimateButton.click();
+        emailInput.sendKeys(email);
+        sendEmailButton.click();
+        return new TenMinutesMailPage(driver);
+    }
 
     public void computeEngineButtonClick() {
         computeEngineButton.click();
