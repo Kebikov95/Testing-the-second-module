@@ -77,15 +77,13 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
 
         TenMinutesMailPage mailPage = new TenMinutesMailPage(driver);
         mailPage.openPageInNewTab();
-        tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
+        getNextWebPage();
         String email = mailPage.getMailAddress();
-        driver.switchTo().window(tabs.get(0));
+        getPreviousWebPage();
         resultPage.sendEmailWithComponentCost(email);
-
-        tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
+        getNextWebPage();
         TenMinutesMailWithTotalCostPage mailPageWithPriceCost = mailPage.openTenMinutesMailWithTotalCostPage();
+
         Assert.assertEquals(mailPageWithPriceCost.getEstimatedMonthlyCostElement()
                 .getText().trim(), "USD 1,082.77");
     }
@@ -94,6 +92,16 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
     public void browserTearDown() {
         driver.quit();
         driver = null;
+    }
+
+    public void getPreviousWebPage() {
+        tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(0));
+    }
+
+    public void getNextWebPage() {
+        tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
     }
 
     public void machineTypeOptionClick(MachineTypeEnum type) {

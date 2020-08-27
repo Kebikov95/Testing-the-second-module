@@ -60,21 +60,17 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     protected GoogleCloudPlatformPricingCalculatorPage(WebDriver driver) {
         super(driver);
         waiter = new WebDriverWait(driver, 10);
-      waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='/products/" +
-                "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']")));
-        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@id='myFrame']")));
-        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
+        frameWaiterToBeAvailable();
         PageFactory.initElements(driver, this);
     }
 
-//    private WebDriverWait frameWaiterToBeAvailable() {
-//        waiter = new WebDriverWait(driver, 10);
-//        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='/products/" +
-//                "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']")));
-//        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@id='myFrame']")));
-//        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
-//        return waiter;
-//    }
+    private WebDriverWait frameWaiterToBeAvailable() {
+        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='/products/" +
+                "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']")));
+        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@id='myFrame']")));
+        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
+        return waiter;
+    }
 
     public void computeEngineButtonClick() {
         computeEngineButton.click();
