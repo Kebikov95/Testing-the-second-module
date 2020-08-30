@@ -8,8 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pastebinTests.structure.enums.homePage.PasteExposureHomePageEnum;
-import pastebinTests.tests.bringItOn.page.PastebinHomePage;
-import pastebinTests.tests.bringItOn.page.PastebinResultPage;
+import pastebinTests.tests.iCanWin.page.PastebinHomePage;
+import pastebinTests.tests.iCanWin.page.PastebinResultPage;
 
 public class WebDriverPastebinHomePageTest {
     private WebDriver driver;
@@ -26,82 +26,73 @@ public class WebDriverPastebinHomePageTest {
 
     @Test
     public void setSearchPasteExposureNeverTest(){
-        driver.findElement(By.xpath("//label[text()='Paste Expiration:']/following-sibling::div")).click();
-        driver.findElement(By.xpath(getPasteExposurePath(PasteExposureHomePageEnum.NEVER))).click();
-        String exposureLine = driver.findElement(
-                By.xpath("//span[@id='select2-postform-expiration-container']")).getText();
+        driver.findElement(By.xpath(homePage.getPasteExpirationLabel())).click();
+        driver.findElement(By.xpath(homePage.getPasteExposurePath(PasteExposureHomePageEnum.NEVER))).click();
+        String exposureLine = driver.findElement(By.xpath(homePage.getPostformExpirationContainer())).getText();
         Assert.assertEquals(exposureLine, "Never");
     }
 
     @Test
     public void setSearchPasteExposureTenMinutesTest(){
-        driver.findElement(By.xpath("//label[text()='Paste Expiration:']/following-sibling::div")).click();
-        driver.findElement(By.xpath(getPasteExposurePath(PasteExposureHomePageEnum.TEN_MINUTES))).click();
-        String exposureLine = driver.findElement(
-                By.xpath("//span[@id='select2-postform-expiration-container']")).getText();
+        driver.findElement(By.xpath(homePage.getPasteExpirationLabel())).click();
+        driver.findElement(By.xpath(homePage.getPasteExposurePath(PasteExposureHomePageEnum.TEN_MINUTES))).click();
+        String exposureLine = driver.findElement(By.xpath(homePage.getPostformExpirationContainer())).getText();
         Assert.assertEquals(exposureLine, "10 Minutes");
     }
 
     @Test
     public void setSearchPasteExposureOneHourTest(){
-        driver.findElement(By.xpath("//label[text()='Paste Expiration:']/following-sibling::div")).click();
-        driver.findElement(By.xpath(getPasteExposurePath(PasteExposureHomePageEnum.ONE_HOUR))).click();
-        String exposureLine = driver.findElement(
-                By.xpath("//span[@id='select2-postform-expiration-container']")).getText();
+        driver.findElement(By.xpath(homePage.getPasteExpirationLabel())).click();
+        driver.findElement(By.xpath(homePage.getPasteExposurePath(PasteExposureHomePageEnum.ONE_HOUR))).click();
+        String exposureLine = driver.findElement(By.xpath(homePage.getPostformExpirationContainer())).getText();
         Assert.assertEquals(exposureLine, "1 Hour");
     }
 
     @Test
     public void setSearchPasteExposureOneDayTest(){
-        driver.findElement(By.xpath("//label[text()='Paste Expiration:']/following-sibling::div")).click();
-        driver.findElement(By.xpath(getPasteExposurePath(PasteExposureHomePageEnum.ONE_DAY))).click();
-        String exposureLine = driver.findElement(
-                By.xpath("//span[@id='select2-postform-expiration-container']")).getText();
+        driver.findElement(By.xpath(homePage.getPasteExpirationLabel())).click();
+        driver.findElement(By.xpath(homePage.getPasteExposurePath(PasteExposureHomePageEnum.ONE_DAY))).click();
+        String exposureLine = driver.findElement(By.xpath(homePage.getPostformExpirationContainer())).getText();
         Assert.assertEquals(exposureLine, "1 Day");
     }
 
     @Test
     public void setSearchPasteExposureOneWeekTest(){
-        driver.findElement(By.xpath("//label[text()='Paste Expiration:']/following-sibling::div")).click();
-        driver.findElement(By.xpath(getPasteExposurePath(PasteExposureHomePageEnum.ONE_WEEK))).click();
-        String exposureLine = driver.findElement(
-                By.xpath("//span[@id='select2-postform-expiration-container']")).getText();
+        driver.findElement(By.xpath(homePage.getPasteExpirationLabel())).click();
+        driver.findElement(By.xpath(homePage.getPasteExposurePath(PasteExposureHomePageEnum.ONE_WEEK))).click();
+        String exposureLine = driver.findElement(By.xpath(homePage.getPostformExpirationContainer())).getText();
         Assert.assertEquals(exposureLine, "1 Week");
     }
 
     @Test
     public void setSearchPasteExposureTwoWeeksTest(){
-        driver.findElement(By.xpath("//label[text()='Paste Expiration:']/following-sibling::div")).click();
-        driver.findElement(By.xpath(getPasteExposurePath(PasteExposureHomePageEnum.TWO_WEEKS))).click();
-        String exposureLine = driver.findElement(
-                By.xpath("//span[@id='select2-postform-expiration-container']")).getText();
+        driver.findElement(By.xpath(homePage.getPasteExpirationLabel())).click();
+        driver.findElement(By.xpath(homePage.getPasteExposurePath(PasteExposureHomePageEnum.TWO_WEEKS))).click();
+        String exposureLine = driver.findElement(By.xpath(homePage.getPostformExpirationContainer())).getText();
         Assert.assertEquals(exposureLine, "2 Weeks");
     }
 
     @Test
     public void setSearchPasteExposureOneMonthTest(){
-        driver.findElement(By.xpath("//label[text()='Paste Expiration:']/following-sibling::div")).click();
-        driver.findElement(By.xpath(getPasteExposurePath(PasteExposureHomePageEnum.ONE_MONTH))).click();
-        String exposureLine = driver.findElement(
-                By.xpath("//span[@id='select2-postform-expiration-container']")).getText();
+        driver.findElement(By.xpath(homePage.getPasteExpirationLabel())).click();
+        driver.findElement(By.xpath(homePage.getPasteExposurePath(PasteExposureHomePageEnum.ONE_MONTH))).click();
+        String exposureLine = driver.findElement(By.xpath(homePage.getPostformExpirationContainer())).getText();
         Assert.assertEquals(exposureLine, "1 Month");
     }
 
     @Test
     public void setSearchPasteExposureSixMonthsTest(){
-        driver.findElement(By.xpath("//label[text()='Paste Expiration:']/following-sibling::div")).click();
-        driver.findElement(By.xpath(getPasteExposurePath(PasteExposureHomePageEnum.SIX_MONTHS))).click();
-        String exposureLine = driver.findElement(
-                By.xpath("//span[@id='select2-postform-expiration-container']")).getText();
+        driver.findElement(By.xpath(homePage.getPasteExpirationLabel())).click();
+        driver.findElement(By.xpath(homePage.getPasteExposurePath(PasteExposureHomePageEnum.SIX_MONTHS))).click();
+        String exposureLine = driver.findElement(By.xpath(homePage.getPostformExpirationContainer())).getText();
         Assert.assertEquals(exposureLine, "6 Months");
     }
 
     @Test
     public void setSearchPasteExposureOneYearTest(){
-        driver.findElement(By.xpath("//label[text()='Paste Expiration:']/following-sibling::div")).click();
-        driver.findElement(By.xpath(getPasteExposurePath(PasteExposureHomePageEnum.ONE_YEAR))).click();
-        String exposureLine = driver.findElement(
-                By.xpath("//span[@id='select2-postform-expiration-container']")).getText();
+        driver.findElement(By.xpath(homePage.getPasteExpirationLabel())).click();
+        driver.findElement(By.xpath(homePage.getPasteExposurePath(PasteExposureHomePageEnum.ONE_YEAR))).click();
+        String exposureLine = driver.findElement(By.xpath(homePage.getPostformExpirationContainer())).getText();
         Assert.assertEquals(exposureLine, "1 Year");
     }
 
@@ -109,9 +100,5 @@ public class WebDriverPastebinHomePageTest {
     public void browserTearDown() {
         driver.quit();
         driver = null;
-    }
-
-    public String getPasteExposurePath(PasteExposureHomePageEnum exposure) {
-        return String.format("//span[@class='select2-results']//li[text()='%s']", exposure.getName());
     }
 }

@@ -8,40 +8,36 @@ import pastebinTests.structure.abstractPageFactory.AbstractPage;
 
 public class PastebinResultPage extends AbstractPage {
 
-    @FindBy(xpath = "//div[@class=\"info-bar\"]//h1")
+    @FindBy(xpath = "//div[@class='info-bar']//h1")
     private WebElement infoBarTitle;
-    @FindBy(xpath = "//div[@class=\"info-bar\"]//div[@class=\"expire\"]")
+    @FindBy(xpath = "//div[@class='info-bar']//div[@class='expire']")
     private WebElement infoBarExposure;
-    @FindBy(xpath = "//div[@class=\"source\"]//div")
+    @FindBy(xpath = "//div[@class='source']//div")
     private WebElement textCode;
-    @FindBy(xpath = "//textarea[@class=\"textarea\"]")
+    @FindBy(xpath = "//textarea[@class='textarea']")
     private WebElement textareaCode;
-    @FindBy(xpath = "//div[@class=\"left\"]/a")
+    @FindBy(xpath = "//div[@class='left']/a")
     private WebElement syntaxType;
 
     public PastebinResultPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-        waitingForItemToLoad("//div[@class='info-bar']//h1");
+        waitingForItemToLoad("//textarea[@class='textarea']");
     }
 
-    public WebElement findTitle() {
-        return infoBarTitle;
+    public String findTitle() { return infoBarTitle.getText().trim(); }
+
+    public String findExposureTime() {
+        return infoBarExposure.getText().trim();
     }
 
-    public WebElement findExposureTime() {
-        return infoBarExposure;
+    public String findTextCode() {
+        return textCode.getText().trim();
     }
 
-    public WebElement findTextCode() {
-        return textCode;
-    }
+    public String findTextareaCode() { return textareaCode.getText().trim(); }
 
-    public WebElement findTextareaCode() {
-        return textareaCode;
-    }
-
-    public WebElement findSyntaxType() { return syntaxType; }
+    public String findSyntaxType() { return syntaxType.getText().trim(); }
 
     protected AbstractPage openPage() {
         return null;

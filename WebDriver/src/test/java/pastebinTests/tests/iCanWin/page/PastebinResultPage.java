@@ -20,22 +20,22 @@ public class PastebinResultPage extends AbstractPage {
     protected PastebinResultPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-        waitingForItemToLoad("//div[@class='info-bar']//h1");
+        waitingForItemToLoad("//textarea[@class='textarea']");
     }
 
     protected AbstractPage openPage() {
         return null;
     }
 
-    public WebElement findCode() {
-        return textareaCode;
+    public String findCode() {
+        return textareaCode.getText().trim();
     }
 
-    public WebElement findTitle() {
-        return infoBarTitle;
+    public String findTitle() {
+        return infoBarTitle.getText().trim();
     }
 
-    public WebElement findExposure() {
-        return infoBarExposure;
+    public String findExposure() {
+        return infoBarExposure.getText().trim();
     }
 }

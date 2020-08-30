@@ -1,6 +1,7 @@
 package googleCloudPricingCalculatorTests.tests.hurtMePlenty.page;
 
 import googleCloudPricingCalculatorTests.structure.abstractPageFactory.AbstractPage;
+import googleCloudPricingCalculatorTests.structure.enums.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,18 +15,19 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     private WebDriverWait waiter;
     private final String HOME_PAGE = "https://cloud.google.com/products/calculator";
 
-    public final static String MACHINE_TYPE_OPTION_PATH = "//md-option[@id='select_option_236']/div[contains(text(), '%s')]";
-    public final static String NUMBERS_OF_GPUS_OPTION_PATH = "//div[@id='select_container_373']//div[contains(text(), '%s')]";
-    public final static String GPU_TYPE_OPTION_PATH = "//md-option/div[contains(text(), '%s')]";
-    public final static String LOCAL_SDD_OPTION_PATH = "//div[@id='select_container_194']//div[contains(text(), '%s')]";
-    public final static String DATA_CENTER_LOCATION_OPTION_PATH = "//div[@id='select_container_89']//div[contains(text(), '%s')]";
-    public final static String COMMITTED_USAGE_OPTION_PATH = "//div[@id='select_container_96']//div[contains(text(), '%s')]";
+    public final static String MACHINE_TYPE_OPTION_PATH = "//div[@id='select_container_87']";
+    public final static String NUMBERS_OF_GPUS_OPTION_PATH = "//div[@id='select_container_373']";
+    public final static String GPU_TYPE_OPTION_PATH = "//md-select-menu";
+    public final static String LOCAL_SDD_OPTION_PATH = "//div[@id='select_container_194']";
+    public final static String DATA_CENTER_LOCATION_OPTION_PATH = "//div[@id='select_container_89']";
+    public final static String COMMITTED_USAGE_OPTION_PATH = "//div[@id='select_container_96']";
+    public final static String CONTAINS_EXPECTED_TEXT = "//div[contains(text(), '%s')]";
 
     @FindBy(xpath = "(//div[text()='Compute Engine'])[1]")
     private WebElement computeEngineButton;
     @FindBy(xpath = "//input[@id='input_61']")
     private WebElement numberOfInstancesInput;
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_58']")
+    @FindBy(xpath = "//md-select[@id='select_86']")
     private WebElement machineTypeSelect;
     @FindBy(xpath = "(//md-checkbox[@class='ng-pristine ng-untouched ng-valid ng-empty'])[1]")
     private WebElement addGpusCheckbox;
@@ -72,6 +74,7 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         return waiter;
     }
 
+    // Static element click methods.
     public void computeEngineButtonClick() {
         computeEngineButton.click();
     }
@@ -110,35 +113,61 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         addToEstimateButton.click();
     }
 
-    // Find elements.
-    public WebElement findNumberOfInstanceResult() {
-        return numberOfInstanceResult;
+    // Dynamic element click methods.
+    public void machineTypeOptionClick(MachineTypeEnum type) {
+        clickToElement(String.format(MACHINE_TYPE_OPTION_PATH + CONTAINS_EXPECTED_TEXT, type.getName()));
     }
 
-    public WebElement findMachineClassResult() {
-        return machineClassResult;
+    public void numbersOfGpusOptionClick(NumberOfGpusEnum type) {
+        clickToElement(String.format(NUMBERS_OF_GPUS_OPTION_PATH + CONTAINS_EXPECTED_TEXT, type.getName()));
     }
 
-    public WebElement findInstanceTypeResult() {
-        return instanceTypeResult;
+    public void gpuTypeOptionClick(GpuTypeEnum type) {
+        clickToElement(String.format(GPU_TYPE_OPTION_PATH + CONTAINS_EXPECTED_TEXT, type.getName()));
     }
 
-    public WebElement findDataCenterLocationResult() {
-        return dataCenterLocationResult;
+    public void localSddOptionClick(LocalSsdEnum type) {
+        clickToElement(String.format(LOCAL_SDD_OPTION_PATH + CONTAINS_EXPECTED_TEXT, type.getName()));
     }
 
-    public WebElement findLocalSsdResult() {
-        return localSsdResult;
+    public void dataCenterLocationOptionClick(DataCenterLocationEnum type) {
+        clickToElement(String.format(DATA_CENTER_LOCATION_OPTION_PATH + CONTAINS_EXPECTED_TEXT, type.getName()));
     }
 
-    public WebElement findCommittedUsageResult() {
-        return committedUsageResult;
+    public void committedUsageOptionClick(CommittedUsageEnum type) {
+        clickToElement(String.format(COMMITTED_USAGE_OPTION_PATH + CONTAINS_EXPECTED_TEXT, type.getName()));
     }
 
-    public WebElement findEstimatedComponentCostResult() {
-        return estimatedComponentCostResult;
+    // Methods for getting text in Web elements.
+    public String findNumberOfInstanceResult() {
+        return numberOfInstanceResult.getText().trim();
     }
 
+    public String findMachineClassResult() {
+        return machineClassResult.getText().trim();
+    }
+
+    public String findInstanceTypeResult() {
+        return instanceTypeResult.getText().trim();
+    }
+
+    public String findDataCenterLocationResult() {
+        return dataCenterLocationResult.getText().trim();
+    }
+
+    public String findLocalSsdResult() {
+        return localSsdResult.getText().trim();
+    }
+
+    public String findCommittedUsageResult() {
+        return committedUsageResult.getText().trim();
+    }
+
+    public String findEstimatedComponentCostResult() {
+        return estimatedComponentCostResult.getText().trim();
+    }
+
+    // Override method.
     protected AbstractPage openPage() {
         return null;
     }

@@ -16,6 +16,9 @@ public class WebDriverPastebinResultPageTest {
     private PastebinHomePage homePage;
     private PastebinResultPage resultPage;
 
+    private final String CODE_EXPECTED_RESULT = "Hello from WebDriver";
+    private final String TITLE_EXPECTED_RESULT = "helloweb";
+
     @BeforeMethod(alwaysRun = true)
     public void browserSetup() {
         driver = new ChromeDriver();
@@ -29,12 +32,12 @@ public class WebDriverPastebinResultPageTest {
             "title: 'helloweb'" +
             "paste expiration: '10 Minutes'")
     public void commonSearchTermResultAreEqualTest() {
-        resultPage = homePage.searchForTerms("Hello from WebDriver","helloweb",
+        resultPage = homePage.searchForTerms(CODE_EXPECTED_RESULT,TITLE_EXPECTED_RESULT,
                 PasteExposureHomePageEnum.TEN_MINUTES);
 
-        Assert.assertEquals(resultPage.findCode().getText(), "Hello from WebDriver");
-        Assert.assertEquals(resultPage.findTitle().getText(), "helloweb");
-        Assert.assertEquals(resultPage.findExposure().getText(), PasteExposureResultPageEnum.TEN_MINUTES.getName());
+        Assert.assertEquals(resultPage.findCode(), CODE_EXPECTED_RESULT);
+        Assert.assertEquals(resultPage.findTitle(), TITLE_EXPECTED_RESULT);
+        Assert.assertEquals(resultPage.findExposure(), PasteExposureResultPageEnum.TEN_MINUTES.getName());
     }
 
     @AfterMethod(alwaysRun = true)

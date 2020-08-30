@@ -4,15 +4,16 @@ import googleCloudPricingCalculatorTests.structure.abstractPageFactory.AbstractP
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TenMinutesMailPage extends AbstractPage {
-    private final String HOME_PAGE = "https://10minutemail.net";
-    private final int HALF_A_MINUTE = 30;
+    private final String HOME_PAGE = "https://10minutemail.com";
+    static String INPUT_PATH = "//input[@id='mail_address']";
+    private final String SEARCH_PLATFORM_POST = "//section[@id='mail_messages']" +
+            "//span[text()='Google Cloud Platform Price Estimate']";
+    private final String SEARCH_TOTAL_COST_RESULT = "//table//h3[contains(text(), 'USD')]";
     private final int ONE_MINUTE = 60;
 
-    @FindBy(xpath = "//input[@id='fe_text']")
+    @FindBy(xpath = "//input[@id='mail_address']")
     private WebElement mailInput;
 
     public TenMinutesMailPage(WebDriver driver) {
@@ -20,42 +21,28 @@ public class TenMinutesMailPage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement getMailElement() {
-        return mailInput;
-    }
-
-    public String getHomePageAddress() {
-        return HOME_PAGE;
-    }
-
     public String getMailAddress() {
         return mailInput.getAttribute("value");
     }
 
-    public TenMinutesMailWithTotalCostPage openTenMinutesMailWithTotalCostPage() {
-        refreshPage(HALF_A_MINUTE);
-        new WebDriverWait(driver, ONE_MINUTE).until(ExpectedConditions
-                .presenceOfElementLocated(By.xpath("//a[contains(text(), 'Google Cloud Platform Price Estimate')]")));
-            driver.findElement(By.xpath("//a[contains(text(), 'Google Cloud Platform Price Estimate')]")).click();
-        return new TenMinutesMailWithTotalCostPage(driver);
+    public void clickToNewPost() {
+        waitingForItemToLoad(SEARCH_PLATFORM_POST, ONE_MINUTE);
+        driver.findElement(By.xpath(SEARCH_PLATFORM_POST)).click();
     }
 
-    private void refreshPage(int seconds) {
-        try {
-            Thread.sleep(seconds * 1000);
-            driver.navigate().refresh();;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public String getTotalCost() {
+        waitingForItemToLoad(SEARCH_TOTAL_COST_RESULT, ONE_MINUTE / 10);
+        return driver.findElement(By.xpath(SEARCH_TOTAL_COST_RESULT)).getText().trim();
     }
 
     public AbstractPage openPage() {
-        ((JavascriptExecutor) driver).executeScript("window.open('https://10minutemail.net')");
+        ((JavascriptExecutor) driver).executeScript(String.format("window.open('%s')", HOME_PAGE));
         driver.get(HOME_PAGE);
         return this;
     }
 
-    public void openPageInNewTab() {
-        ((JavascriptExecutor) driver).executeScript("window.open('https://10minutemail.net')");
+    public AbstractPage openPageInNewTab() {
+        ((JavascriptExecutor) driver).executeScript(String.format("window.open('%s')", HOME_PAGE));
+        return this;
     }
 }

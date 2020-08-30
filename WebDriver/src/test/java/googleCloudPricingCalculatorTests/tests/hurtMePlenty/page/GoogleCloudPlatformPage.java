@@ -11,6 +11,8 @@ import java.util.List;
 
 public class GoogleCloudPlatformPage extends AbstractPage {
     private final String HOME_PAGE = "https://cloud.google.com";
+    private final String SEARCH_PLATFORM = "Google Cloud Platform Pricing Calculator";
+    private final String FIRST_EXPECTED_LINK = "//div[@class='gs-webResult gs-result']//a[@class='gs-title']";
 
     @FindBy(xpath = "//input[@name='q']")
     private WebElement searchInput;
@@ -28,11 +30,10 @@ public class GoogleCloudPlatformPage extends AbstractPage {
 
     public GoogleCloudPlatformPricingCalculatorPage openGoogleCloudPlatformPricingCalculator() {
         searchInput.click();
-        searchInput.sendKeys("Google Cloud Platform Pricing Calculator");
+        searchInput.sendKeys(SEARCH_PLATFORM);
         searchInput.submit();
-        waitingForItemToLoad("//div[@class='gs-webResult gs-result']//a[@class='gs-title']");
-        List<WebElement> findElements = driver
-                .findElements(By.xpath("//div[@class='gs-webResult gs-result']//a[@class='gs-title']"));
+        waitingForItemToLoad(FIRST_EXPECTED_LINK);
+        List<WebElement> findElements = driver.findElements(By.xpath(FIRST_EXPECTED_LINK));
         findElements.get(0).click();
         return new GoogleCloudPlatformPricingCalculatorPage(driver);
     }

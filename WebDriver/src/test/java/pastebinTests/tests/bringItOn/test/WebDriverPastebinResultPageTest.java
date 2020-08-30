@@ -18,6 +18,11 @@ public class WebDriverPastebinResultPageTest {
     private PastebinHomePage homePage;
     private PastebinResultPage resultPage;
 
+    private final String TEXTAREA_EXPECTED_RESULT = "git config --global user.name  'New Sheriff in Town'\n" +
+            "git reset $(git commit-tree HEAD^{tree} -m 'Legacy code')\n" +
+            "git push origin master --force";
+    private final String TITLE_EXPECTED_RESULT = "how to gain dominance among developers";
+
     @BeforeMethod(alwaysRun = true)
     public void browserSetup() {
         driver = new ChromeDriver();
@@ -27,42 +32,21 @@ public class WebDriverPastebinResultPageTest {
     }
 
     @Test(description = "Test with params:" +
-            "code: 'Hello from WebDriver'" +
-            "title: 'helloweb'" +
-            "paste expiration: '10 Minutes'")
-    public void commonSearchTermResultAreEqualWithoutSyntax() {
-        resultPage = homePage.searchForTerms("Hello from WebDriver","helloweb",
-                PasteExposureHomePageEnum.TEN_MINUTES);
-
-        Assert.assertEquals(resultPage.findTextareaCode().getText(), "Hello from WebDriver");
-        Assert.assertEquals(resultPage.findTitle().getText(), "helloweb");
-        Assert.assertEquals(resultPage.findExposureTime().getText(), PasteExposureResultPageEnum.TEN_MINUTES.getName());
-    }
-
-    @Test(description = "Test with params:" +
             "code: " +
-                "'git config --global user.name  \"New Sheriff in Town\"\n" +
-                "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
+                "'git config --global user.name  'New Sheriff in Town'" +
+                "git reset $(git commit-tree HEAD^{tree} -m 'Legacy code')\n" +
                 "git push origin master --force'" +
             "title: 'how to gain dominance among developers'" +
             "Syntax Highlighting: 'Bash'" +
             "paste expiration: '10 Minutes'")
     public void commonSearchTermResultAreEqualWithSyntax() {
-        resultPage = homePage.searchForTerms(
-                "git config --global user.name  \"New Sheriff in Town\"\n" +
-                        "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
-                        "git push origin master --force",
-                "how to gain dominance among developers",
-                SyntaxHighlightingHomePageEnum.BASH,
-                PasteExposureHomePageEnum.TEN_MINUTES);
+        resultPage = homePage.searchForTerms(TEXTAREA_EXPECTED_RESULT, TITLE_EXPECTED_RESULT,
+                SyntaxHighlightingHomePageEnum.BASH, PasteExposureHomePageEnum.TEN_MINUTES);
 
-        Assert.assertEquals(resultPage.findTextareaCode().getText(),
-                "git config --global user.name  \"New Sheriff in Town\"\n" +
-                        "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
-                        "git push origin master --force");
-        Assert.assertEquals(resultPage.findTitle().getText(), "how to gain dominance among developers");
-        Assert.assertEquals(resultPage.findExposureTime().getText(), PasteExposureResultPageEnum.TEN_MINUTES.getName());
-        Assert.assertEquals(resultPage.findSyntaxType().getText(), SyntaxHighlightingResultPageEnum.BASH.getName());
+        Assert.assertEquals(resultPage.findTextareaCode(), TEXTAREA_EXPECTED_RESULT);
+        Assert.assertEquals(resultPage.findTitle(), TITLE_EXPECTED_RESULT);
+        Assert.assertEquals(resultPage.findExposureTime(), PasteExposureResultPageEnum.TEN_MINUTES.getName());
+        Assert.assertEquals(resultPage.findSyntaxType(), SyntaxHighlightingResultPageEnum.BASH.getName());
     }
 
     @AfterMethod(alwaysRun = true)

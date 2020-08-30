@@ -1,6 +1,7 @@
 package googleCloudPricingCalculatorTests.tests.hardcore.page;
 
 import googleCloudPricingCalculatorTests.structure.abstractPageFactory.AbstractPage;
+import googleCloudPricingCalculatorTests.structure.enums.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -86,6 +87,7 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         return new TenMinutesMailPage(driver);
     }
 
+    // Methods for clicking static Web elements.
     public void computeEngineButtonClick() {
         computeEngineButton.click();
     }
@@ -94,9 +96,7 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         numberOfInstancesInput.sendKeys(String.valueOf(number));
     }
 
-    public void machineTypeClick() {
-        machineTypeSelect.click();
-    }
+    public void machineTypeClick() { machineTypeSelect.click(); }
 
     public void addGpusCheckboxClick() {
         addGpusCheckbox.click();
@@ -124,35 +124,61 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         addToEstimateButton.click();
     }
 
+    // Methods for clicking dynamic Web elements.
+    public void machineTypeOptionClick(MachineTypeEnum type) {
+        clickToElement(String.format(MACHINE_TYPE_OPTION_PATH, type.getName()));
+    }
+
+    public void numbersOfGpusOptionClick(NumberOfGpusEnum type) {
+        clickToElement(String.format(NUMBERS_OF_GPUS_OPTION_PATH, type.getName()));
+    }
+
+    public void gpuTypeOptionClick(GpuTypeEnum type) {
+        clickToElement(String.format(GPU_TYPE_OPTION_PATH, type.getName()));
+    }
+
+    public void localSddOptionClick(LocalSsdEnum type) {
+        clickToElement(String.format(LOCAL_SDD_OPTION_PATH, type.getName()));
+    }
+
+    public void dataCenterLocationOptionClick(DataCenterLocationEnum type) {
+        clickToElement(String.format(DATA_CENTER_LOCATION_OPTION_PATH, type.getName()));
+    }
+
+    public void committedUsageOptionClick(CommittedUsageEnum type) {
+        clickToElement(String.format(COMMITTED_USAGE_OPTION_PATH, type.getName()));
+    }
+
     // Find elements.
-    public WebElement findNumberOfInstanceResult() {
-        return numberOfInstanceResult;
+    public String findNumberOfInstanceResult() {
+        return numberOfInstanceResult.getText().trim();
     }
 
-    public WebElement findMachineClassResult() {
-        return machineClassResult;
+    public String findMachineClassResult() {
+        return machineClassResult.getText().trim();
     }
 
-    public WebElement findInstanceTypeResult() {
-        return instanceTypeResult;
+    public String findInstanceTypeResult() {
+        return instanceTypeResult.getText().trim();
     }
 
-    public WebElement findDataCenterLocationResult() {
-        return dataCenterLocationResult;
+    public String findDataCenterLocationResult() {
+        return dataCenterLocationResult.getText().trim();
     }
 
-    public WebElement findLocalSsdResult() {
-        return localSsdResult;
+    public String findLocalSsdResult() {
+        return localSsdResult.getText().trim();
     }
 
-    public WebElement findCommittedUsageResult() {
-        return committedUsageResult;
+    public String findCommittedUsageResult() {
+        return committedUsageResult.getText().trim();
     }
 
-    public WebElement findEstimatedComponentCostResult() {
-        return estimatedComponentCostResult;
+    public String findEstimatedComponentCostResult() {
+        return estimatedComponentCostResult.getText().trim();
     }
 
+    // Override method.
     protected AbstractPage openPage() {
         return null;
     }

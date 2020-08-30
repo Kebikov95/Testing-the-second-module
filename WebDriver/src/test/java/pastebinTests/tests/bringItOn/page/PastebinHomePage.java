@@ -13,7 +13,13 @@ import pastebinTests.structure.enums.homePage.SyntaxHighlightingHomePageEnum;
 
 public class PastebinHomePage extends AbstractPage {
     private final String HOME_PAGE = "https://pastebin.com";
-    private String optionPath = "//span[@class='select2-results']//li[text()='%s']";
+
+    private String OPTION_PATH = "//span[@class='select2-results']//li[text()='%s']";
+    private final String SYNTAX_HIGH_LIGHTING = "//span[@class='select2-results']//li[text()='%s']";
+    private final String PASTE_EXPOSURE = "//span[@class='select2-results']//li[text()='%s']";
+    private final String PASTE_EXPIRATION_LABEL = "//label[text()='Paste Expiration:']/following-sibling::div";
+    private final String POST_FORM_EXPIRATION_CONTAINER = "//label[text()='Paste Expiration:']/following-sibling::div";
+    private final String POST_FORM_FORMAT_CONTAINER = "//span[@id='select2-postform-format-container']";
 
     @FindBy(xpath = "//textarea[@id='postform-text']")
     private WebElement codeTextArea;
@@ -35,18 +41,32 @@ public class PastebinHomePage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    protected AbstractPage openPage() {
-        driver.get(HOME_PAGE);
-        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("postform-text")));
-        return this;
+
+    public String getSyntaxTypePath(SyntaxHighlightingHomePageEnum syntaxType) {
+        return String.format(SYNTAX_HIGH_LIGHTING, syntaxType.getName());
+    }
+
+    public String getPasteExposurePath(PasteExposureHomePageEnum exposure) {
+        return String.format(PASTE_EXPOSURE, exposure.getName());
+    }
+
+    public String getPasteExpirationLabel() {
+        return PASTE_EXPIRATION_LABEL;
+    }
+
+    public String getPostformExpirationContainer() {
+        return POST_FORM_EXPIRATION_CONTAINER;
+    }
+
+    public String getPostformFormatContainer() {
+        return POST_FORM_FORMAT_CONTAINER;
     }
 
     public PastebinResultPage searchForTerms(String code, String title, PasteExposureHomePageEnum exposure) {
-        codeTextArea.sendKeys("Hello from WebDriver");
-        titleInput.sendKeys("helloweb");
+        codeTextArea.sendKeys(code);
+        titleInput.sendKeys(title);
         pasteExpirationSelect.click();
-        pasteExpirationOption.findElement(By.xpath(String.format(optionPath, exposure.getName()))).click();
+        pasteExpirationOption.findElement(By.xpath(String.format(OPTION_PATH, exposure.getName()))).click();
         createNewPasteButton.submit();
         return new PastebinResultPage(driver);
     }
@@ -62,5 +82,12 @@ public class PastebinHomePage extends AbstractPage {
         pasteExpirationOption.click();
         createNewPasteButton.submit();
         return new PastebinResultPage(driver);
+    }
+
+    protected AbstractPage openPage() {
+        driver.get(HOME_PAGE);
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("postform-text")));
+        return this;
     }
 }

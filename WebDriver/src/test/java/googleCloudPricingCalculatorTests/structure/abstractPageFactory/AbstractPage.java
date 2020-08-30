@@ -20,6 +20,16 @@ public abstract class AbstractPage {
 
     public void waitingForItemToLoad(String path) {
         new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(path)));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
+    }
+
+    public void waitingForItemToLoad(String path, int seconds) {
+        new WebDriverWait(driver, seconds)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
+    }
+
+    public void clickToElement(String path) {
+        waitingForItemToLoad(path);
+        driver.findElement(By.xpath(path)).click();
     }
 }
