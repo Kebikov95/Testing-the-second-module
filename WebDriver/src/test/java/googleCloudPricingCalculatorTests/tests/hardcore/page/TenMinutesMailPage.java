@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TenMinutesMailPage extends AbstractPage {
     private final String HOME_PAGE = "https://10minutemail.com";
-    static String INPUT_PATH = "//input[@id='mail_address']";
     private final String SEARCH_PLATFORM_POST = "//section[@id='mail_messages']" +
             "//span[text()='Google Cloud Platform Price Estimate']";
     private final String SEARCH_TOTAL_COST_RESULT = "//table//h3[contains(text(), 'USD')]";

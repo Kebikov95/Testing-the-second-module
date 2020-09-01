@@ -18,7 +18,6 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
     private GoogleCloudPlatformPage homePage;
     private GoogleCloudPlatformPricingCalculatorPage resultPage;
     private ArrayList<String> tabs;
-    private final int WAIT_TIMEOUT_SECONDS = 10;
 
     private String NUMBER_OF_INSTANCE_EXPECTED_RESULT = "4 x";
     private String MACHINE_CLASS_EXPECTED_RESULT = "VM class: regular";

@@ -15,6 +15,9 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     private WebDriverWait waiter;
     private final String HOME_PAGE = "https://cloud.google.com/products/calculator";
 
+    public final static String MAIN_FRAME_PATH = "//iframe[@src='/products/" +
+            "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']";
+    public final static String MY_FRAME_PATH = "//iframe[@id='myFrame']";
     public final static String MACHINE_TYPE_OPTION_PATH = "//md-option[@id='select_option_236']/div[contains(text(), '%s')]";
     public final static String NUMBERS_OF_GPUS_OPTION_PATH = "//div[@id='select_container_373']//div[contains(text(), '%s')]";
     public final static String GPU_TYPE_OPTION_PATH = "//md-option/div[contains(text(), '%s')]";
@@ -73,15 +76,15 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     }
 
     private void frameWaiting() {
-        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@src='/products/" +
-                "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']")));
-        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@id='myFrame']")));
+        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath(MAIN_FRAME_PATH)));
+        waiter.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath(MY_FRAME_PATH)));
         waiter.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
     }
 
     public TenMinutesMailPage sendEmailWithComponentCost(String email) {
         frameWaiting();
         emailEstimateButton.click();
+        emailInput.click();
         emailInput.sendKeys(email);
         sendEmailButton.click();
         return new TenMinutesMailPage(driver);
