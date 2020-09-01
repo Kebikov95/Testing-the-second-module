@@ -6,11 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class TenMinutesMailPage extends AbstractPage {
-    private final String HOME_PAGE = "https://10minutemail.com";
-    private final String SEARCH_PLATFORM_POST = "//section[@id='mail_messages']" +
-            "//span[text()='Google Cloud Platform Price Estimate']";
-    private final String SEARCH_TOTAL_COST_RESULT = "//table//h3[contains(text(), 'USD')]";
     private final int ONE_MINUTE = 60;
+    private final String HOME_PAGE = "https://10minutemail.com";
+    private final By searchPlatformPostLocator = By.xpath("//section[@id='mail_messages']" +
+            "//span[text()='Google Cloud Platform Price Estimate']");
+    private final By searchTotalCostResultLocator = By.xpath("//table//h3[contains(text(), 'USD')]");
+
 
     @FindBy(xpath = "//input[@id='mail_address']")
     private WebElement mailInput;
@@ -25,13 +26,13 @@ public class TenMinutesMailPage extends AbstractPage {
     }
 
     public void clickToNewPost() {
-        waitingForItemToLoad(SEARCH_PLATFORM_POST, ONE_MINUTE);
-        driver.findElement(By.xpath(SEARCH_PLATFORM_POST)).click();
+        waitingForItemToLoad(searchPlatformPostLocator, ONE_MINUTE);
+        driver.findElement(searchPlatformPostLocator).click();
     }
 
     public String getTotalCost() {
-        waitingForItemToLoad(SEARCH_TOTAL_COST_RESULT, ONE_MINUTE / 10);
-        return driver.findElement(By.xpath(SEARCH_TOTAL_COST_RESULT)).getText().trim();
+        waitingForItemToLoad(searchTotalCostResultLocator, ONE_MINUTE / 10);
+        return driver.findElement(searchTotalCostResultLocator).getText().trim();
     }
 
     public AbstractPage openPage() {

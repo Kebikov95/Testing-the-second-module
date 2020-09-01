@@ -1,24 +1,15 @@
 package googleCloudPricingCalculatorTests.tests.hardcore.test;
 
 import googleCloudPricingCalculatorTests.structure.enums.*;
-import googleCloudPricingCalculatorTests.tests.hardcore.page.GoogleCloudPlatformPage;
-import googleCloudPricingCalculatorTests.tests.hardcore.page.GoogleCloudPlatformPricingCalculatorPage;
 import googleCloudPricingCalculatorTests.tests.hardcore.page.TenMinutesMailPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
-public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
-    private WebDriver driver;
-    private GoogleCloudPlatformPage homePage;
-    private GoogleCloudPlatformPricingCalculatorPage resultPage;
-    private ArrayList<String> tabs;
-
+public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest extends CommonConditions {
     private String NUMBER_OF_INSTANCE_EXPECTED_RESULT = "4 x";
     private String MACHINE_CLASS_EXPECTED_RESULT = "VM class: regular";
     private String INSTANCE_TYPE_EXPECTED_RESULT = "Instance type: n1-standard-8";
@@ -27,14 +18,6 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
     private String COMMITTED_USAGE_EXPECTED_RESULT = "Commitment term: 1 Year";
     private String ESTIMATED_COMPONENT_COST_EXPECTED_RESULT = "Estimated Component Cost: USD 1,082.77 per 1 month";
     private String MAIL_TOTAL_COST_EXPECTED_RESULT = "USD 1,082.77";
-
-    @BeforeMethod(alwaysRun = true)
-    public void browserSetup() {
-        driver = new ChromeDriver();
-        driver.get("https://cloud.google.com");
-        driver.manage().window().maximize();
-        homePage = new GoogleCloudPlatformPage(driver);
-    }
 
     @Test
     public void fillingOutPriceFormTest() {
@@ -56,13 +39,13 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
         resultPage.committedUsageOptionClick(CommittedUsageEnum.ONE_YEAR);
         resultPage.addToEstimateClick();
 
-        Assert.assertEquals(resultPage.findNumberOfInstanceResult(), NUMBER_OF_INSTANCE_EXPECTED_RESULT);
-        Assert.assertEquals(resultPage.findMachineClassResult(), MACHINE_CLASS_EXPECTED_RESULT);
-        Assert.assertEquals(resultPage.findInstanceTypeResult(), INSTANCE_TYPE_EXPECTED_RESULT);
-        Assert.assertEquals(resultPage.findDataCenterLocationResult(), DATA_CENTER_LOCATION_EXPECTED_RESULT);
-        Assert.assertEquals(resultPage.findLocalSsdResult(), LOCAL_SSD_EXPECTED_RESULT);
-        Assert.assertEquals(resultPage.findCommittedUsageResult(), COMMITTED_USAGE_EXPECTED_RESULT);
-        Assert.assertEquals(resultPage.findEstimatedComponentCostResult(), ESTIMATED_COMPONENT_COST_EXPECTED_RESULT);
+        assertThat(resultPage.findNumberOfInstanceResult(), is(equalTo(NUMBER_OF_INSTANCE_EXPECTED_RESULT)));
+        assertThat(resultPage.findMachineClassResult(), is(equalTo(MACHINE_CLASS_EXPECTED_RESULT)));
+        assertThat(resultPage.findInstanceTypeResult(), is(equalTo(INSTANCE_TYPE_EXPECTED_RESULT)));
+        assertThat(resultPage.findDataCenterLocationResult(), is(equalTo(DATA_CENTER_LOCATION_EXPECTED_RESULT)));
+        assertThat(resultPage.findLocalSsdResult(), is(equalTo(LOCAL_SSD_EXPECTED_RESULT)));
+        assertThat(resultPage.findCommittedUsageResult(), is(equalTo(COMMITTED_USAGE_EXPECTED_RESULT)));
+        assertThat(resultPage.findEstimatedComponentCostResult(), is(equalTo(ESTIMATED_COMPONENT_COST_EXPECTED_RESULT)));
 
         TenMinutesMailPage mailPage = new TenMinutesMailPage(driver);
         mailPage.openPageInNewTab();
@@ -73,22 +56,6 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest {
         getNextWebPage();
         mailPage.clickToNewPost();
 
-        Assert.assertEquals(mailPage.getTotalCost(), MAIL_TOTAL_COST_EXPECTED_RESULT);
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void browserTearDown() {
-        driver.quit();
-        driver = null;
-    }
-
-    public void getPreviousWebPage() {
-        tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(0));
-    }
-
-    public void getNextWebPage() {
-        tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
+        assertThat(mailPage.getTotalCost(), is(equalTo(MAIL_TOTAL_COST_EXPECTED_RESULT)));
     }
 }

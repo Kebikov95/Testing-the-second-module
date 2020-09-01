@@ -2,7 +2,6 @@ package googleCloudPricingCalculatorTests.structure.abstractPageFactory;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,8 +28,23 @@ public abstract class AbstractPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(path)));
     }
 
+    public void waitingForItemToLoad(By locator) {
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
+                .until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void waitingForItemToLoad(By locator, int seconds) {
+        new WebDriverWait(driver, seconds)
+                .until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
     public void clickToElement(String path) {
         waitingForItemToLoad(path);
         driver.findElement(By.xpath(path)).click();
+    }
+
+    public void clickToElement(By locator) {
+        waitingForItemToLoad(locator);
+        driver.findElement(locator).click();
     }
 }

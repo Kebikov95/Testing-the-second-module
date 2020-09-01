@@ -183,6 +183,7 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
 
     // Override method.
     protected AbstractPage openPage() {
-        return null;
+        driver.navigate().to(HOME_PAGE);
+        return this;
     }
 }
