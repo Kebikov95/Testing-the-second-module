@@ -1,0 +1,16 @@
+com\hardcore\page\TenMinutesMailPage.class
+com\structure\abstractPageFactory\AbstractPage.class
+com\hardcore\driver\DriverSingleton.class
+com\structure\enums\MachineClassEnum.class
+com\hardcore\page\GoogleCloudPlatformPage.class
+com\structure\enums\GpuTypeEnum.class
+com\structure\enums\LocalSsdEnum.class
+com\structure\enums\OperatingSystemEnum.class
+com\structure\enums\MachineTypeEnum.class
+com\hardcore\test\WebDriverGoogleCloudPlatformPageTest.class
+com\structure\enums\NumberOfGpusEnum.class
+com\hardcore\test\CommonConditions.class
+com\hardcore\test\WebDriverGoogleCloudPlatformPricingCalculatorPageTest.class
+com\structure\enums\CommittedUsageEnum.class
+com\hardcore\page\GoogleCloudPlatformPricingCalculatorPage.class
+com\structure\enums\DataCenterLocationEnum.class
