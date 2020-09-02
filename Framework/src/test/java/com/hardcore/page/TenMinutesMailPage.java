@@ -12,7 +12,6 @@ public class TenMinutesMailPage extends AbstractPage {
             "//span[text()='Google Cloud Platform Price Estimate']");
     private final By searchTotalCostResultLocator = By.xpath("//table//h3[contains(text(), 'USD')]");
 
-
     @FindBy(xpath = "//input[@id='mail_address']")
     private WebElement mailInput;
 

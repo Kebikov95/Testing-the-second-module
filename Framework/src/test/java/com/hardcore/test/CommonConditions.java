@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class CommonConditions {
     protected GoogleCloudPlatformPage homePage;
     protected GoogleCloudPlatformPricingCalculatorPage resultPage;
-    protected ArrayList<String> tabs;
     protected WebDriver driver;
 
     @BeforeMethod()
@@ -26,15 +25,5 @@ public class CommonConditions {
     @AfterMethod(alwaysRun = true)
     public void browserTearDown() {
         DriverSingleton.closeDriver();
-    }
-
-    public void getPreviousWebPage() {
-        tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(0));
-    }
-
-    public void getNextWebPage() {
-        tabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
     }
 }

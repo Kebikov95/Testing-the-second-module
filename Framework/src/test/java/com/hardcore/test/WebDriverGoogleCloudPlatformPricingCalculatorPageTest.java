@@ -1,6 +1,8 @@
 package com.hardcore.test;
 
-import com.structure.enums.*;
+import com.hardcore.driver.DriverSingleton;
+import com.hardcore.model.ComputeEngine;
+import com.hardcore.service.ComputeEngineCreator;
 import com.hardcore.page.TenMinutesMailPage;
 import org.testng.annotations.Test;
 
@@ -20,24 +22,11 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest extends Commo
 
     @Test
     public void fillingOutPriceFormTest() {
+        TenMinutesMailPage mailPage = new TenMinutesMailPage(driver);
+        ComputeEngine engine = ComputeEngineCreator.withOptimalParameters();
         resultPage = homePage.openGoogleCloudPlatformPricingCalculator();
-        resultPage.computeEngineButtonClick();
-        resultPage.numberOfInstancesInputSendKeys(4);
-        resultPage.machineTypeClick();
-        resultPage.machineTypeOptionClick(MachineTypeEnum.N1_STANDARD_8);
-        resultPage.addGpusCheckboxClick();
-        resultPage.numbersOfGpusClick();
-        resultPage.numbersOfGpusOptionClick(NumberOfGpusEnum.ONE);
-        resultPage.gpuTypeClick();
-        resultPage.gpuTypeOptionClick(GpuTypeEnum.NVIDIA_TESLA_V100);
-        resultPage.localSddClick();
-        resultPage.localSddOptionClick(LocalSsdEnum.TWO);
-        resultPage.dataCenterLocationClick();
-        resultPage.dataCenterLocationOptionClick(DataCenterLocationEnum.FRANKFURT);
-        resultPage.committedUsageClick();
-        resultPage.committedUsageOptionClick(CommittedUsageEnum.ONE_YEAR);
-        resultPage.addToEstimateClick();
-
+        resultPage.login(engine);
+        
         assertThat(resultPage.findNumberOfInstanceResult(), is(equalTo(NUMBER_OF_INSTANCE_EXPECTED_RESULT)));
         assertThat(resultPage.findMachineClassResult(), is(equalTo(MACHINE_CLASS_EXPECTED_RESULT)));
         assertThat(resultPage.findInstanceTypeResult(), is(equalTo(INSTANCE_TYPE_EXPECTED_RESULT)));
@@ -45,16 +34,6 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest extends Commo
         assertThat(resultPage.findLocalSsdResult(), is(equalTo(LOCAL_SSD_EXPECTED_RESULT)));
         assertThat(resultPage.findCommittedUsageResult(), is(equalTo(COMMITTED_USAGE_EXPECTED_RESULT)));
         assertThat(resultPage.findEstimatedComponentCostResult(), is(equalTo(ESTIMATED_COMPONENT_COST_EXPECTED_RESULT)));
-
-        TenMinutesMailPage mailPage = new TenMinutesMailPage(driver);
-        mailPage.openPageInNewTab();
-        getNextWebPage();
-        String email = mailPage.getMailAddress();
-        getPreviousWebPage();
-        resultPage.sendEmailWithComponentCost(email);
-        getNextWebPage();
-        mailPage.clickToNewPost();
-
-        assertThat(mailPage.getTotalCost(), is(equalTo(MAIL_TOTAL_COST_EXPECTED_RESULT)));
+        assertThat(resultPage.getComponentCostByMail(mailPage), is(equalTo(MAIL_TOTAL_COST_EXPECTED_RESULT)));
     }
 }

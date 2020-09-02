@@ -1,5 +1,8 @@
 package com.hardcore.page;
 
+import com.hardcore.driver.DriverSingleton;
+import com.hardcore.model.ComputeEngine;
+import com.hardcore.service.ComputeEngineCreator;
 import com.structure.abstractPageFactory.AbstractPage;
 import com.structure.enums.*;
 import org.openqa.selenium.By;
@@ -18,7 +21,7 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     public final static String MAIN_FRAME_PATH = "//iframe[@src='/products/" +
             "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']";
     public final static String MY_FRAME_PATH = "//iframe[@id='myFrame']";
-    public final static String MACHINE_TYPE_OPTION_PATH = "//md-option[@id='select_option_236']/div[contains(text(), '%s')]";
+    public final static String MACHINE_TYPE_OPTION_PATH = "//md-select-menu//div[contains(text(), '%s')]";
     public final static String NUMBERS_OF_GPUS_OPTION_PATH = "//div[@id='select_container_373']//div[contains(text(), '%s')]";
     public final static String GPU_TYPE_OPTION_PATH = "//md-option/div[contains(text(), '%s')]";
     public final static String LOCAL_SDD_OPTION_PATH = "//div[@id='select_container_194']//div[contains(text(), '%s')]";
@@ -27,9 +30,9 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
 
     @FindBy(xpath = "(//div[text()='Compute Engine'])[1]")
     private WebElement computeEngineButton;
-    @FindBy(xpath = "//input[@id='input_61']")
+    @FindBy(xpath = "//input[@id='input_60']")
     private WebElement numberOfInstancesInput;
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_58']")
+    @FindBy(xpath = "//md-select-value[@id='select_value_label_57']")
     private WebElement machineTypeSelect;
     @FindBy(xpath = "(//md-checkbox[@class='ng-pristine ng-untouched ng-valid ng-empty'])[1]")
     private WebElement addGpusCheckbox;
@@ -39,11 +42,11 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     private WebElement gpuTypeSelect;
     @FindBy(xpath = "//md-select-value[@id='select_value_label_192']")
     private WebElement localSddSelect;
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_59']")
+    @FindBy(xpath = "//md-select-value[@id='select_value_label_58']")
     private WebElement dataCenterLocationSelect;
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_60']")
+    @FindBy(xpath = "//md-select-value[@id='select_value_label_59']")
     private WebElement committedUsageSelect;
-    @FindBy(xpath = "//button[@class='md-raised md-primary cpc-button md-button md-ink-ripple']")
+    @FindBy(xpath = "(//button[contains(text(), 'Add to Estimate')])[1]")
     private WebElement addToEstimateButton;
 
     @FindBy(xpath = "//md-list[@class='cartitem ng-scope']//span[@class='ng-binding ng-scope']")
@@ -81,6 +84,25 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         waiter.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("body")));
     }
 
+    public void login(ComputeEngine engine) {
+        this.computeEngineButtonClick();
+        this.numberOfInstancesInputSendKeys(engine.getNumberOfInstances());
+        this.machineTypeClick();
+        this.machineTypeOptionClick(engine.getMachineType());
+        this.addGpusCheckboxClick();
+        this.numbersOfGpusClick();
+        this.numbersOfGpusOptionClick(engine.getNumberOfGpus());
+        this.gpuTypeClick();
+        this.gpuTypeOptionClick(engine.getGpuType());
+        this.localSddClick();
+        this.localSddOptionClick(engine.getLocalSsd());
+        this.dataCenterLocationClick();
+        this.dataCenterLocationOptionClick(engine.getDataCenterLocation());
+        this.committedUsageClick();
+        this.committedUsageOptionClick(engine.getCommittedUsage());
+        this.addToEstimateClick();
+    }
+
     public TenMinutesMailPage sendEmailWithComponentCost(String email) {
         frameWaiting();
         emailEstimateButton.click();
@@ -90,7 +112,18 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         return new TenMinutesMailPage(driver);
     }
 
-    // Methods for clicking static Web elements.
+    public String getComponentCostByMail(TenMinutesMailPage mailPage) {
+        mailPage.openPageInNewTab();
+        DriverSingleton.getNextWebPage();
+        String email = mailPage.getMailAddress();
+        DriverSingleton.getPreviousWebPage();
+        this.sendEmailWithComponentCost(email);
+        DriverSingleton.getNextWebPage();
+        mailPage.clickToNewPost();
+        return mailPage.getTotalCost();
+    }
+
+     // Methods for clicking static Web elements.
     public void computeEngineButtonClick() {
         computeEngineButton.click();
     }
@@ -153,9 +186,7 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     }
 
     // Find elements.
-    public String findNumberOfInstanceResult() {
-        return numberOfInstanceResult.getText().trim();
-    }
+    public String findNumberOfInstanceResult() { return numberOfInstanceResult.getText().trim(); }
 
     public String findMachineClassResult() {
         return machineClassResult.getText().trim();
