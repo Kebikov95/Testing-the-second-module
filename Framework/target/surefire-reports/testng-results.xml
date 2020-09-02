@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2020-09-02T14:23:02Z" name="Surefire suite" finished-at="2020-09-02T14:25:04Z" duration-ms="121065">
+    <groups>
+    </groups>
+    <test started-at="2020-09-02T14:23:02Z" name="Surefire test" finished-at="2020-09-02T14:25:04Z" duration-ms="121065">
+      <class name="com.hardcore.test.WebDriverGoogleCloudPlatformPageTest">
+        <test-method is-config="true" signature="browserSetup()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@2fd66ad3]" started-at="2020-09-02T14:23:03Z" name="browserSetup" finished-at="2020-09-02T14:23:37Z" duration-ms="34739" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserSetup -->
+        <test-method signature="searchInputNotNullTest()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@2fd66ad3]" started-at="2020-09-02T14:23:37Z" name="searchInputNotNullTest" finished-at="2020-09-02T14:23:37Z" duration-ms="92" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchInputNotNullTest -->
+        <test-method is-config="true" signature="browserTearDown()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@2fd66ad3]" started-at="2020-09-02T14:23:37Z" name="browserTearDown" finished-at="2020-09-02T14:23:39Z" duration-ms="1178" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserTearDown -->
+      </class> <!-- com.hardcore.test.WebDriverGoogleCloudPlatformPageTest -->
+      <class name="com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest">
+        <test-method is-config="true" signature="browserSetup()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@5d11346a]" started-at="2020-09-02T14:23:39Z" name="browserSetup" finished-at="2020-09-02T14:24:13Z" duration-ms="34167" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserSetup -->
+        <test-method signature="fillingOutPriceFormTest()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@5d11346a]" started-at="2020-09-02T14:24:13Z" name="fillingOutPriceFormTest" finished-at="2020-09-02T14:25:02Z" duration-ms="49514" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillingOutPriceFormTest -->
+        <test-method is-config="true" signature="browserTearDown()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@5d11346a]" started-at="2020-09-02T14:25:02Z" name="browserTearDown" finished-at="2020-09-02T14:25:04Z" duration-ms="1283" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserTearDown -->
+      </class> <!-- com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

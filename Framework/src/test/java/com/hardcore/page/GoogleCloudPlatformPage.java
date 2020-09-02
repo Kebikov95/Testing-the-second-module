@@ -21,6 +21,7 @@ public class GoogleCloudPlatformPage extends AbstractPage {
 
     public GoogleCloudPlatformPage(WebDriver driver) {
         super(driver);
+        driver.get("https://cloud.google.com");
         PageFactory.initElements(driver, this);
     }
 

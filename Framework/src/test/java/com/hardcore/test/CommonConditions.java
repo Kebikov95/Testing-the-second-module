@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import java.util.ArrayList;
-
 public class CommonConditions {
     protected GoogleCloudPlatformPage homePage;
     protected GoogleCloudPlatformPricingCalculatorPage resultPage;
@@ -16,9 +14,8 @@ public class CommonConditions {
 
     @BeforeMethod()
     public void browserSetup() {
-        System.setProperty("browser", "chrome");
+//        System.setProperty("browser", "firefox");
         driver = DriverSingleton.getDriver();
-        driver.get("https://cloud.google.com");
         homePage = new GoogleCloudPlatformPage(driver);
     }
 

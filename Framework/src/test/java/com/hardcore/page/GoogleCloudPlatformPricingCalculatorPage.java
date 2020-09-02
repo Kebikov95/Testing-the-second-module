@@ -2,7 +2,7 @@ package com.hardcore.page;
 
 import com.hardcore.driver.DriverSingleton;
 import com.hardcore.model.ComputeEngine;
-import com.hardcore.service.ComputeEngineCreator;
+import com.hardcore.util.BrowserTabsManager;
 import com.structure.abstractPageFactory.AbstractPage;
 import com.structure.enums.*;
 import org.openqa.selenium.By;
@@ -14,7 +14,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
-    private WebDriver driver;
     private WebDriverWait waiter;
     private final String HOME_PAGE = "https://cloud.google.com/products/calculator";
 
@@ -114,11 +113,11 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
 
     public String getComponentCostByMail(TenMinutesMailPage mailPage) {
         mailPage.openPageInNewTab();
-        DriverSingleton.getNextWebPage();
+        BrowserTabsManager.getNextWebPage();
         String email = mailPage.getMailAddress();
-        DriverSingleton.getPreviousWebPage();
+        BrowserTabsManager.getPreviousWebPage();
         this.sendEmailWithComponentCost(email);
-        DriverSingleton.getNextWebPage();
+        BrowserTabsManager.getNextWebPage();
         mailPage.clickToNewPost();
         return mailPage.getTotalCost();
     }

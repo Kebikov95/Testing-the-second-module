@@ -1,6 +1,5 @@
 package com.hardcore.test;
 
-import com.hardcore.driver.DriverSingleton;
 import com.hardcore.model.ComputeEngine;
 import com.hardcore.service.ComputeEngineCreator;
 import com.hardcore.page.TenMinutesMailPage;
@@ -26,7 +25,7 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest extends Commo
         ComputeEngine engine = ComputeEngineCreator.withOptimalParameters();
         resultPage = homePage.openGoogleCloudPlatformPricingCalculator();
         resultPage.login(engine);
-        
+
         assertThat(resultPage.findNumberOfInstanceResult(), is(equalTo(NUMBER_OF_INSTANCE_EXPECTED_RESULT)));
         assertThat(resultPage.findMachineClassResult(), is(equalTo(MACHINE_CLASS_EXPECTED_RESULT)));
         assertThat(resultPage.findInstanceTypeResult(), is(equalTo(INSTANCE_TYPE_EXPECTED_RESULT)));
