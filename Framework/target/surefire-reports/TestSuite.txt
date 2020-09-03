@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 123.684 s - in TestSuite
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 38.802 s <<< FAILURE! - in TestSuite
+fillingOutPriceFormTest(com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest)  Time elapsed: 0.055 s  <<< FAILURE!
+java.lang.ExceptionInInitializerError
+	at com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest.fillingOutPriceFormTest(WebDriverGoogleCloudPlatformPricingCalculatorPageTest.java:18)
+Caused by: java.util.MissingResourceException: Can't find bundle for base name light, locale ru_RU
+	at com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest.fillingOutPriceFormTest(WebDriverGoogleCloudPlatformPricingCalculatorPageTest.java:18)
+

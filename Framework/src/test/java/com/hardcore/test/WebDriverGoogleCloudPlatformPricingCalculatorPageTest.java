@@ -15,7 +15,7 @@ public class WebDriverGoogleCloudPlatformPricingCalculatorPageTest extends Commo
     @Test
     public void fillingOutPriceFormTest() {
         TenMinutesMailPage mailPage = new TenMinutesMailPage(driver);
-        ComputeEngine engine = ComputeEngineCreator.withOptimalParameters();
+        ComputeEngine engine = ComputeEngineCreator.createComputeEngine();
         resultPage = homePage.openGoogleCloudPlatformPricingCalculator();
         resultPage.login(engine);
 

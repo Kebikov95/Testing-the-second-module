@@ -55,9 +55,9 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     private WebElement instanceTypeResult;
     @FindBy(xpath = "(//md-list[@class='cartitem ng-scope']//div[@class='md-list-item-text ng-binding'])[4]")
     private WebElement dataCenterLocationResult;
-    @FindBy(xpath = "(//md-list[@class='cartitem ng-scope']//div[@class='md-list-item-text ng-binding'])[5]")
+    @FindBy(xpath = "(//md-list[@class='cartitem ng-scope']//div[contains(text(), 'Total available local SSD')])[1]")
     private WebElement localSsdResult;
-    @FindBy(xpath = "(//md-list[@class='cartitem ng-scope']//div[@class='md-list-item-text ng-binding'])[6]")
+    @FindBy(xpath = "(//md-list[@class='cartitem ng-scope']//div[contains(text(), 'Commitment term')])[1]")
     private WebElement committedUsageResult;
     @FindBy(xpath = "//md-list[@class='cartitem ng-scope']//div[@class='md-list-item-text']")
     private WebElement estimatedComponentCostResult;
@@ -104,7 +104,6 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     public TenMinutesMailPage sendEmailWithComponentCost(String email) {
         frameWaiting();
         emailEstimateButton.click();
-        emailInput.click();
         emailInput.sendKeys(email);
         sendEmailButton.click();
         return new TenMinutesMailPage(driver);

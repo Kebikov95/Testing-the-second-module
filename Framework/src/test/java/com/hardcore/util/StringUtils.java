@@ -24,11 +24,11 @@ public class StringUtils {
     }
 
     public static String getInstanceTypeExpectedResult(MachineTypeEnum type) {
-        return INSTANCE_TYPE_PART_LINE + type.getName().split(" ")[0];
+        return INSTANCE_TYPE_PART_LINE + type.getName().split("\\(")[0].trim();
     }
 
     public static String getDataCenterLocationExpectedResult(DataCenterLocationEnum location) {
-        return DATA_CENTER_LOCATION_PART_LINE + location.getName().split(" ")[0];
+        return DATA_CENTER_LOCATION_PART_LINE + location.getName().split("\\(")[0].trim();
     }
 
     public static String getLocalSddExpectedResult(LocalSsdEnum ssd) {
