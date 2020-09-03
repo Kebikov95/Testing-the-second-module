@@ -12,10 +12,11 @@ public class ComputeEngine {
     private LocalSsdEnum localSsd;
     private DataCenterLocationEnum dataCenterLocation;
     private CommittedUsageEnum committedUsage;
+    private String mailTotalCost;
 
-    public ComputeEngine(int numberOfInstances, MachineTypeEnum machineType,
-                         NumberOfGpusEnum numberOfGpus, GpuTypeEnum gpuType, LocalSsdEnum localSsd,
-                         DataCenterLocationEnum dataCenterLocation, CommittedUsageEnum committedUsage) {
+    public ComputeEngine(int numberOfInstances, MachineTypeEnum machineType, NumberOfGpusEnum numberOfGpus,
+                         GpuTypeEnum gpuType, LocalSsdEnum localSsd, DataCenterLocationEnum dataCenterLocation,
+                         CommittedUsageEnum committedUsage) {
         this.numberOfInstances = numberOfInstances;
         this.machineType = machineType;
         this.numberOfGpus = numberOfGpus;
@@ -23,6 +24,19 @@ public class ComputeEngine {
         this.localSsd = localSsd;
         this.dataCenterLocation = dataCenterLocation;
         this.committedUsage = committedUsage;
+    }
+
+    public ComputeEngine(int numberOfInstances, MachineTypeEnum machineType, NumberOfGpusEnum numberOfGpus,
+                         GpuTypeEnum gpuType, LocalSsdEnum localSsd, DataCenterLocationEnum dataCenterLocation,
+                         CommittedUsageEnum committedUsage, String mailTotalCost) {
+        this.numberOfInstances = numberOfInstances;
+        this.machineType = machineType;
+        this.numberOfGpus = numberOfGpus;
+        this.gpuType = gpuType;
+        this.localSsd = localSsd;
+        this.dataCenterLocation = dataCenterLocation;
+        this.committedUsage = committedUsage;
+        this.mailTotalCost = mailTotalCost;
     }
 
     public int getNumberOfInstances() {
@@ -81,6 +95,14 @@ public class ComputeEngine {
         this.committedUsage = committedUsage;
     }
 
+    public String getMailTotalCost() {
+        return mailTotalCost;
+    }
+
+    public void setMailTotalCost(String mailTotalCost) {
+        this.mailTotalCost = mailTotalCost;
+    }
+
     @Override
     public String toString() {
         return "ComputeEngine{" +
@@ -91,6 +113,7 @@ public class ComputeEngine {
                 ", localSsd=" + localSsd +
                 ", dataCenterLocation=" + dataCenterLocation +
                 ", committedUsage=" + committedUsage +
+                ", mailTotalCost='" + mailTotalCost + '\'' +
                 '}';
     }
 
@@ -105,11 +128,12 @@ public class ComputeEngine {
                 gpuType == that.gpuType &&
                 localSsd == that.localSsd &&
                 dataCenterLocation == that.dataCenterLocation &&
-                committedUsage == that.committedUsage;
+                committedUsage == that.committedUsage &&
+                Objects.equals(mailTotalCost, that.mailTotalCost);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numberOfInstances, machineType, numberOfGpus, gpuType, localSsd, dataCenterLocation, committedUsage);
+        return Objects.hash(numberOfInstances, machineType, numberOfGpus, gpuType, localSsd, dataCenterLocation, committedUsage, mailTotalCost);
     }
 }

@@ -14,7 +14,7 @@ public class CommonConditions {
 
     @BeforeMethod()
     public void browserSetup() {
-//        System.setProperty("browser", "firefox");
+        System.setProperty("browser", "chrome");
         driver = DriverSingleton.getDriver();
         homePage = new GoogleCloudPlatformPage(driver);
     }

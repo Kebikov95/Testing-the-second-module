@@ -1,6 +1,5 @@
 package com.hardcore.page;
 
-import com.hardcore.driver.DriverSingleton;
 import com.hardcore.model.ComputeEngine;
 import com.hardcore.util.BrowserTabsManager;
 import com.structure.abstractPageFactory.AbstractPage;
