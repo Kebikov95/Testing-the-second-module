@@ -17,16 +17,12 @@ public class ComputeEngineCreator {
     public static ComputeEngine createComputeEngine() {
         ComputeEngine engine;
         String type = TestDataReader.getTestData(COMPUTE_ENGINE_TYPE);
-        switch (type) {
-            case "light": {
-                engine = withLightParameters();
-            }
-            case "complicated": {
-                engine = withComplicatedParameters();
-            }
-            default: {
-                engine = withOptimalParameters();
-            }
+        if(type.equals("light")) {
+            engine = withLightParameters();
+        } else if(type.equals("complicated")) {
+            engine = withComplicatedParameters();
+        } else {
+            engine = withOptimalParameters();
         }
         return engine;
     }

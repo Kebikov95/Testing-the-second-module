@@ -2,35 +2,42 @@
 <testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-09-03T18:35:17Z" name="Surefire suite" finished-at="2020-09-03T18:35:55Z" duration-ms="38026">
+  <suite started-at="2020-09-04T06:36:33Z" name="Surefire suite" finished-at="2020-09-04T06:39:17Z" duration-ms="164622">
     <groups>
     </groups>
-    <test started-at="2020-09-03T18:35:17Z" name="Surefire test" finished-at="2020-09-03T18:35:55Z" duration-ms="38026">
+    <test started-at="2020-09-04T06:36:33Z" name="Surefire test" finished-at="2020-09-04T06:39:17Z" duration-ms="164622">
       <class name="com.hardcore.test.WebDriverGoogleCloudPlatformPageTest">
-        <test-method is-config="true" signature="browserSetup()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@17211155]" started-at="2020-09-03T18:35:17Z" name="browserSetup" finished-at="2020-09-03T18:35:34Z" duration-ms="17306" status="PASS">
+        <test-method is-config="true" signature="browserSetup()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@7a36aefa]" started-at="2020-09-04T06:36:33Z" name="browserSetup" finished-at="2020-09-04T06:37:09Z" duration-ms="36147" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserSetup -->
-        <test-method signature="searchInputNotNullTest()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@17211155]" started-at="2020-09-03T18:35:34Z" name="searchInputNotNullTest" finished-at="2020-09-03T18:35:34Z" duration-ms="116" status="PASS">
+        <test-method signature="searchInputNotNullTest()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@7a36aefa]" started-at="2020-09-04T06:37:09Z" name="searchInputNotNullTest" finished-at="2020-09-04T06:37:09Z" duration-ms="89" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchInputNotNullTest -->
-        <test-method is-config="true" signature="browserTearDown()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@17211155]" started-at="2020-09-03T18:35:34Z" name="browserTearDown" finished-at="2020-09-03T18:35:35Z" duration-ms="947" status="PASS">
+        <test-method is-config="true" signature="browserTearDown()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@7a36aefa]" started-at="2020-09-04T06:37:09Z" name="browserTearDown" finished-at="2020-09-04T06:37:10Z" duration-ms="869" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserTearDown -->
       </class> <!-- com.hardcore.test.WebDriverGoogleCloudPlatformPageTest -->
       <class name="com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest">
-        <test-method is-config="true" signature="browserSetup()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@b3d7190]" started-at="2020-09-03T18:35:35Z" name="browserSetup" finished-at="2020-09-03T18:35:54Z" duration-ms="18576" status="PASS">
+        <test-method is-config="true" signature="browserSetup()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@17211155]" started-at="2020-09-04T06:37:10Z" name="browserSetup" finished-at="2020-09-04T06:37:38Z" duration-ms="27946" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserSetup -->
-        <test-method signature="fillingOutPriceFormTest()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@b3d7190]" started-at="2020-09-03T18:35:54Z" name="fillingOutPriceFormTest" finished-at="2020-09-03T18:35:54Z" duration-ms="23" status="FAIL">
-          <exception class="java.lang.ExceptionInInitializerError">
+        <test-method signature="fillingOutPriceFormTest()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@17211155]" started-at="2020-09-04T06:37:38Z" name="fillingOutPriceFormTest" finished-at="2020-09-04T06:39:15Z" duration-ms="97601" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of element located by By.xpath: //section[@id='mail_messages']//span[text()='Google Cloud Platform Price Estimate'] (tried for 60 second(s) with 500 milliseconds interval)]]>
+            </message>
             <full-stacktrace>
-              <![CDATA[java.lang.ExceptionInInitializerError
-at com.hardcore.service.ComputeEngineCreator.createComputeEngine(ComputeEngineCreator.java:19)
-at com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest.fillingOutPriceFormTest(WebDriverGoogleCloudPlatformPricingCalculatorPageTest.java:18)
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //section[@id='mail_messages']//span[text()='Google Cloud Platform Price Estimate'] (tried for 60 second(s) with 500 milliseconds interval)
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+at com.structure.abstractPageFactory.AbstractPage.waitingForItemToLoad(AbstractPage.java:38)
+at com.hardcore.page.TenMinutesMailPage.clickToNewPost(TenMinutesMailPage.java:28)
+at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.getComponentCostByMail(GoogleCloudPlatformPricingCalculatorPage.java:119)
+at com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest.fillingOutPriceFormTest(WebDriverGoogleCloudPlatformPricingCalculatorPageTest.java:34)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -61,21 +68,40 @@ at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader
 at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
 at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
 at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
-Caused by: java.util.MissingResourceException: Can't find bundle for base name light, locale ru_RU
-at java.base/java.util.ResourceBundle.throwMissingResourceException(ResourceBundle.java:2055)
-at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1689)
-at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1593)
-at java.base/java.util.ResourceBundle.getBundleImpl(ResourceBundle.java:1556)
-at java.base/java.util.ResourceBundle.getBundle(ResourceBundle.java:857)
-at com.hardcore.service.TestDataReader.<clinit>(TestDataReader.java:6)
-... 32 more
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//section[@id='mail_messages']//span[text()='Google Cloud Platform Price Estimate']"}
+  (Session info: chrome=85.0.4183.83)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-J5DG572', ip: '192.168.0.100', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '14.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.83, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\KIRILL~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:55921}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 16c45e98b905bbbc7fc618234dfe295b
+*** Element info: {Using=xpath, value=//section[@id='mail_messages']//span[text()='Google Cloud Platform Price Estimate']}
+at jdk.internal.reflect.GeneratedConstructorAccessor16.newInstance(Unknown Source)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:205)
+at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:201)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)
+... 34 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.ExceptionInInitializerError -->
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- fillingOutPriceFormTest -->
-        <test-method is-config="true" signature="browserTearDown()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@b3d7190]" started-at="2020-09-03T18:35:54Z" name="browserTearDown" finished-at="2020-09-03T18:35:55Z" duration-ms="996" status="PASS">
+        <test-method is-config="true" signature="browserTearDown()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@17211155]" started-at="2020-09-04T06:39:16Z" name="browserTearDown" finished-at="2020-09-04T06:39:17Z" duration-ms="1876" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserTearDown -->
