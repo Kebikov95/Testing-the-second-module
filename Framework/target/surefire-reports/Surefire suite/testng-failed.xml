@@ -10,6 +10,13 @@
           <include name="browserTearDown"/>
         </methods>
       </class> <!-- com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest -->
+      <class name="com.hardcore.test.WebDriverGoogleCloudPlatformPageTest">
+        <methods>
+          <include name="searchInputNotNullTest"/>
+          <include name="browserSetup"/>
+          <include name="browserTearDown"/>
+        </methods>
+      </class> <!-- com.hardcore.test.WebDriverGoogleCloudPlatformPageTest -->
     </classes>
   </test> <!-- Surefire test(failed) -->
 </suite> <!-- Failed suite [Surefire suite] -->
