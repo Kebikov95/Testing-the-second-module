@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-09-05T08:39:34Z" name="Surefire suite" finished-at="2020-09-05T08:41:14Z" duration-ms="100235">
+  <suite started-at="2020-09-05T10:19:30Z" name="Smoke" finished-at="2020-09-05T10:20:07Z" duration-ms="36947">
     <groups>
     </groups>
-    <test started-at="2020-09-05T08:39:34Z" name="Surefire test" finished-at="2020-09-05T08:41:14Z" duration-ms="100235">
+    <test started-at="2020-09-05T10:19:30Z" name="UserAccess" finished-at="2020-09-05T10:20:07Z" duration-ms="36947">
       <class name="com.hardcore.test.WebDriverGoogleCloudPlatformPageTest">
-        <test-method is-config="true" signature="browserSetup()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@35a50a4c]" started-at="2020-09-05T08:39:34Z" name="browserSetup" finished-at="2020-09-05T08:40:09Z" duration-ms="35350" status="PASS">
+        <test-method is-config="true" signature="browserSetup()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@58134517]" started-at="2020-09-05T10:19:30Z" name="browserSetup" finished-at="2020-09-05T10:20:05Z" duration-ms="35481" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserSetup -->
-        <test-method signature="searchInputNotNullTest()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@35a50a4c]" started-at="2020-09-05T08:40:09Z" name="searchInputNotNullTest" finished-at="2020-09-05T08:40:10Z" duration-ms="354" status="PASS">
+        <test-method signature="searchInputNotNullTest()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@58134517]" started-at="2020-09-05T10:20:05Z" name="searchInputNotNullTest" finished-at="2020-09-05T10:20:05Z" duration-ms="139" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchInputNotNullTest -->
-        <test-method is-config="true" signature="browserTearDown()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@35a50a4c]" started-at="2020-09-05T08:40:10Z" name="browserTearDown" finished-at="2020-09-05T08:40:11Z" duration-ms="1226" status="PASS">
+        <test-method is-config="true" signature="browserTearDown()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@58134517]" started-at="2020-09-05T10:20:05Z" name="browserTearDown" finished-at="2020-09-05T10:20:07Z" duration-ms="1244" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserTearDown -->
       </class> <!-- com.hardcore.test.WebDriverGoogleCloudPlatformPageTest -->
-      <class name="com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest">
-        <test-method is-config="true" signature="browserSetup()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@1f021e6c]" started-at="2020-09-05T08:40:11Z" name="browserSetup" finished-at="2020-09-05T08:40:31Z" duration-ms="20307" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- browserSetup -->
-        <test-method signature="fillingOutPriceFormTest()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@1f021e6c]" started-at="2020-09-05T08:40:31Z" name="fillingOutPriceFormTest" finished-at="2020-09-05T08:41:13Z" duration-ms="42025" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- fillingOutPriceFormTest -->
-        <test-method is-config="true" signature="browserTearDown()[pri:0, instance:com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@1f021e6c]" started-at="2020-09-05T08:41:13Z" name="browserTearDown" finished-at="2020-09-05T08:41:14Z" duration-ms="895" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- browserTearDown -->
-      </class> <!-- com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest -->
-    </test> <!-- Surefire test -->
-  </suite> <!-- Surefire suite -->
+    </test> <!-- UserAccess -->
+  </suite> <!-- Smoke -->
 </testng-results>

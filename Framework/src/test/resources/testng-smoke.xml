@@ -3,7 +3,7 @@
 <suite name="Smoke" verbose="1" >
     <test name="UserAccess"   >
         <classes>
-            <class name="com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest" />
+            <class name="com.hardcore.test.WebDriverGoogleCloudPlatformPageTest" />
         </classes>
     </test>
 </suite>
