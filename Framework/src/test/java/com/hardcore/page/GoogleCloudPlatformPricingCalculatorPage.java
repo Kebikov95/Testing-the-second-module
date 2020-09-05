@@ -222,7 +222,7 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         return estimatedComponentCostResult.getText().trim();
     }
 
-    // Override method.
+    @Override
     protected AbstractPage openPage() {
         driver.navigate().to(HOME_PAGE);
         return this;
