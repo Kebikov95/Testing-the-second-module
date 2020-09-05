@@ -1,25 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 3, Errors: 0, Skipped: 1, Time elapsed: 166.082 s <<< FAILURE! - in TestSuite
-browserSetup(com.hardcore.test.WebDriverGoogleCloudPlatformPageTest)  Time elapsed: 75.772 s  <<< FAILURE!
-org.openqa.selenium.TimeoutException: 
-Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение. (os error 10061)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'DESKTOP-J5DG572', ip: '192.168.0.100', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '14.0.2'
-Driver info: driver.version: FirefoxDriver
-remote stacktrace: 
-
-browserTearDown(com.hardcore.test.WebDriverGoogleCloudPlatformPageTest)  Time elapsed: 75.788 s  <<< FAILURE!
-java.lang.NullPointerException
-
-fillingOutPriceFormTest(com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest)  Time elapsed: 45.213 s  <<< FAILURE!
-org.openqa.selenium.TimeoutException: 
-Expected condition failed: waiting for visibility of element located by By.xpath: //div[@id='select_container_96']//div[contains(text(), '1 Year')] (tried for 10 second(s) with 500 milliseconds interval)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'DESKTOP-J5DG572', ip: '192.168.0.100', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '14.0.2'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.83, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\KIRILL~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:49740}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 8e4d4fdeb227d06ee6727591aa2cfebc
-	at com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest.fillingOutPriceFormTest(WebDriverGoogleCloudPlatformPricingCalculatorPageTest.java:20)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 104.2 s - in TestSuite

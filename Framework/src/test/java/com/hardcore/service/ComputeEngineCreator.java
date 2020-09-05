@@ -17,14 +17,6 @@ public class ComputeEngineCreator {
     public static ComputeEngine createComputeEngine() {
         ComputeEngine engine;
         String type = TestDataReader.getTestData(COMPUTE_ENGINE_TYPE);
-//        if(type.equals("light")) {
-//            engine = withLightParameters();
-//        } else if(type.equals("complicated")) {
-//            engine = withComplicatedParameters();
-//        } else {
-//            engine = withOptimalParameters();
-//        }
-//        return engine;
         switch(type) {
             case "light": engine = withLightParameters();
             break;

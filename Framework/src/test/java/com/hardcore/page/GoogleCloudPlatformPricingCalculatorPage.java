@@ -11,10 +11,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     private WebDriverWait waiter;
     private final String HOME_PAGE = "https://cloud.google.com/products/calculator";
+    private final Logger logger = LogManager.getRootLogger();
 
     public final static String MAIN_FRAME_PATH = "//iframe[@src='/products/" +
             "calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame']";
@@ -83,6 +86,7 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     }
 
     public void login(ComputeEngine engine) {
+        logger.info("Open: [" + HOME_PAGE + "]");
         this.computeEngineButtonClick();
         this.numberOfInstancesInputSendKeys(engine.getNumberOfInstances());
         this.machineTypeClick();
@@ -106,6 +110,7 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         emailEstimateButton.click();
         emailInput.sendKeys(email);
         sendEmailButton.click();
+        logger.info("Send Email to: [" + email + "]");
         return new TenMinutesMailPage(driver);
     }
 
@@ -122,11 +127,8 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
 
      // Methods for clicking static Web elements.
     public void computeEngineButtonClick() {
+        logger.info("Platform choice: [Compute Engine]");
         computeEngineButton.click();
-    }
-
-    public void numberOfInstancesInputSendKeys(int number) {
-        numberOfInstancesInput.sendKeys(String.valueOf(number));
     }
 
     public void machineTypeClick() { machineTypeSelect.click(); }
@@ -158,27 +160,38 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     }
 
     // Methods for clicking dynamic Web elements.
+    public void numberOfInstancesInputSendKeys(int number) {
+        logger.info("Input number of instance: [" + number + "]");
+        numberOfInstancesInput.sendKeys(String.valueOf(number));
+    }
+
     public void machineTypeOptionClick(MachineTypeEnum type) {
+        logger.info("Choose machine type: [" + type.getName() + "]");
         clickToElement(String.format(MACHINE_TYPE_OPTION_PATH, type.getName()));
     }
 
     public void numbersOfGpusOptionClick(NumberOfGpusEnum type) {
+        logger.info("Choose number of GPUs: [" + type.getName() + "]");
         clickToElement(String.format(NUMBERS_OF_GPUS_OPTION_PATH, type.getName()));
     }
 
     public void gpuTypeOptionClick(GpuTypeEnum type) {
+        logger.info("Choose GPU type: [" + type.getName() + "]");
         clickToElement(String.format(GPU_TYPE_OPTION_PATH, type.getName()));
     }
 
     public void localSddOptionClick(LocalSsdEnum type) {
+        logger.info("Choose local SSD: [" + type.getName() + "]");
         clickToElement(String.format(LOCAL_SDD_OPTION_PATH, type.getName()));
     }
 
     public void dataCenterLocationOptionClick(DataCenterLocationEnum type) {
+        logger.info("Choose Data Center Location: [" + type.getName() + "]");
         clickToElement(String.format(DATA_CENTER_LOCATION_OPTION_PATH, type.getName()));
     }
 
     public void committedUsageOptionClick(CommittedUsageEnum type) {
+        logger.info("Choose Committed Usage: [" + type.getName() + "]");
         clickToElement(String.format(COMMITTED_USAGE_OPTION_PATH, type.getName()));
     }
 

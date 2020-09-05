@@ -7,6 +7,7 @@ com\structure\enums\LocalSsdEnum.class
 com\structure\enums\MachineTypeEnum.class
 com\hardcore\model\ComputeEngine.class
 com\hardcore\test\WebDriverGoogleCloudPlatformPageTest.class
+com\hardcore\util\TestListener.class
 com\structure\enums\NumberOfGpusEnum.class
 com\hardcore\service\TestDataReader.class
 com\hardcore\test\CommonConditions.class
