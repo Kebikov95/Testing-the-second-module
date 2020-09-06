@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>TestNG:  All tests</title>
+<title>TestNG:  Surefire test</title>
 <link href="../testng.css" rel="stylesheet" type="text/css" />
 <link href="../my-testng.css" rel="stylesheet" type="text/css" />
 
@@ -53,13 +53,13 @@ function toggleAllBoxes() {
 
 </head>
 <body>
-<h2 align='center'>All tests</h2><table border='1' align="center">
+<h2 align='center'>Surefire test</h2><table border='1' align="center">
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sat Sep 05 17:20:22 MSK 2020</td>
+<td>Started on:</td><td>Sun Sep 06 12:59:19 MSK 2020</td>
 </tr>
-<tr><td>Total time:</td><td>97 seconds (97429 ms)</td>
+<tr><td>Total time:</td><td>82 seconds (82365 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,14 +75,14 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest.fillingOutPriceFormTest()'><b>fillingOutPriceFormTest</b><br>Test class: com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest</td>
-<td><div><pre>org.openqa.selenium.ElementNotInteractableException: element not interactable
+<td title='com.hardcore.test.GooglePricingCalculatorPageTest.fillingOutPriceFormTest()'><b>fillingOutPriceFormTest</b><br>Test class: com.hardcore.test.GooglePricingCalculatorPageTest</td>
+<td><div><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;iframe src=&quot;/products/calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame&quot; allowfullscreen=&quot;&quot; cd_frame_id_=&quot;760b77aeda8f431ed301ffbdededbe43&quot;&gt;&lt;/iframe&gt; is not clickable at point (896, 75). Other element would receive the click: &lt;div class=&quot;devsite-doc-set-nav-row&quot;&gt;...&lt;/div&gt;
   (Session info: chrome=85.0.4183.83)
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
 System info: host: &apos;DESKTOP-J5DG572&apos;, ip: &apos;192.168.0.102&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;14.0.2&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.83, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\KIRILL~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:63800}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 432ef631e84c71b840f148be1ad7d364
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.83, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\KIRILL~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:51270}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 79eec2b4c4a43e19fb90853323529dbf
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
@@ -93,16 +93,17 @@ Session ID: 432ef631e84c71b840f148be1ad7d364
 	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
 	at com.sun.proxy.$Proxy24.click(Unknown Source)
-	at com.hardcore.page.GoogleCloudPlatformPage.openGoogleCloudPlatformPricingCalculator(GoogleCloudPlatformPage.java:38)
-	at com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest.fillingOutPriceFormTest(WebDriverGoogleCloudPlatformPricingCalculatorPageTest.java:19)
-... Removed 38 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace967643830", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace967643830'><pre>org.openqa.selenium.ElementNotInteractableException: element not interactable
+	at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.sendEmailWithComponentCost(GoogleCloudPlatformPricingCalculatorPage.java:112)
+	at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.getComponentCostByMail(GoogleCloudPlatformPricingCalculatorPage.java:122)
+	at com.hardcore.test.GooglePricingCalculatorPageTest.fillingOutPriceFormTest(GooglePricingCalculatorPageTest.java:34)
+... Removed 39 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace281049997", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace281049997'><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;iframe src=&quot;/products/calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame&quot; allowfullscreen=&quot;&quot; cd_frame_id_=&quot;760b77aeda8f431ed301ffbdededbe43&quot;&gt;&lt;/iframe&gt; is not clickable at point (896, 75). Other element would receive the click: &lt;div class=&quot;devsite-doc-set-nav-row&quot;&gt;...&lt;/div&gt;
   (Session info: chrome=85.0.4183.83)
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
 System info: host: &apos;DESKTOP-J5DG572&apos;, ip: &apos;192.168.0.102&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;14.0.2&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.83, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\KIRILL~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:63800}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 432ef631e84c71b840f148be1ad7d364
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.83, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\KIRILL~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:51270}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 79eec2b4c4a43e19fb90853323529dbf
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -122,8 +123,9 @@ Session ID: 432ef631e84c71b840f148be1ad7d364
 	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
 	at com.sun.proxy.$Proxy24.click(Unknown Source)
-	at com.hardcore.page.GoogleCloudPlatformPage.openGoogleCloudPlatformPricingCalculator(GoogleCloudPlatformPage.java:38)
-	at com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest.fillingOutPriceFormTest(WebDriverGoogleCloudPlatformPricingCalculatorPageTest.java:19)
+	at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.sendEmailWithComponentCost(GoogleCloudPlatformPricingCalculatorPage.java:112)
+	at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.getComponentCostByMail(GoogleCloudPlatformPricingCalculatorPage.java:122)
+	at com.hardcore.test.GooglePricingCalculatorPageTest.fillingOutPriceFormTest(GooglePricingCalculatorPageTest.java:34)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -146,16 +148,17 @@ Session ID: 432ef631e84c71b840f148be1ad7d364
 	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
 	at org.testng.TestNG.runSuites(TestNG.java:1049)
 	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
-	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:135)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:193)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:94)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:146)
 	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
 </pre></div></td>
-<td>2</td>
-<td>com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest@564718df</td></tr>
+<td>38</td>
+<td>com.hardcore.test.GooglePricingCalculatorPageTest@1f021e6c</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -165,10 +168,10 @@ Session ID: 432ef631e84c71b840f148be1ad7d364
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.hardcore.test.WebDriverGoogleCloudPlatformPageTest.searchInputNotNullTest()'><b>searchInputNotNullTest</b><br>Test class: com.hardcore.test.WebDriverGoogleCloudPlatformPageTest</td>
+<td title='com.hardcore.test.GooglePlatformPageTest.searchInputNotNullTest()'><b>searchInputNotNullTest</b><br>Test class: com.hardcore.test.GooglePlatformPageTest</td>
 <td></td>
 <td>0</td>
-<td>com.hardcore.test.WebDriverGoogleCloudPlatformPageTest@2b4a2ec7</td></tr>
+<td>com.hardcore.test.GooglePlatformPageTest@35a50a4c</td></tr>
 </table><p>
 </body>
 </html>
