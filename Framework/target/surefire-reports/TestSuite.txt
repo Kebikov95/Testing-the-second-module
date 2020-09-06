@@ -1,14 +1,15 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 79.995 s <<< FAILURE! - in TestSuite
-fillingOutPriceFormTest(com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest)  Time elapsed: 35.844 s  <<< FAILURE!
-org.openqa.selenium.TimeoutException: 
-Expected condition failed: waiting for visibility of element located by By.xpath: //div[@id='select_container_96']//div[contains(text(), '1 Year')] (tried for 10 second(s) with 500 milliseconds interval)
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 103.565 s <<< FAILURE! - in TestSuite
+fillingOutPriceFormTest(com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest)  Time elapsed: 4.282 s  <<< FAILURE!
+org.openqa.selenium.ElementNotInteractableException: 
+element not interactable
+  (Session info: chrome=85.0.4183.83)
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
 System info: host: 'DESKTOP-J5DG572', ip: '192.168.0.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '14.0.2'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.83, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\KIRILL~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:56568}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 89a2f6121a797b6d0ba2d6279888e9cd
-	at com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest.fillingOutPriceFormTest(WebDriverGoogleCloudPlatformPricingCalculatorPageTest.java:20)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.83, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\KIRILL~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:63800}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 432ef631e84c71b840f148be1ad7d364
+	at com.hardcore.test.WebDriverGoogleCloudPlatformPricingCalculatorPageTest.fillingOutPriceFormTest(WebDriverGoogleCloudPlatformPricingCalculatorPageTest.java:19)
 

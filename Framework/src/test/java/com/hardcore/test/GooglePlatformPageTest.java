@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class WebDriverGoogleCloudPlatformPageTest extends CommonConditions {
+public class GooglePlatformPageTest extends CommonConditions {
     private final By searchPanelLocator = By.xpath("//input[@name='q']");
 
     @Test
