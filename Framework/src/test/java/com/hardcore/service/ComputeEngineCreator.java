@@ -4,7 +4,6 @@ import com.hardcore.model.ComputeEngine;
 import com.structure.enums.*;
 
 public class ComputeEngineCreator {
-    public static final String COMPUTE_ENGINE_TYPE = "compute.engine.type";
     private static int NUMBER_OF_INSTANCE;
     private static MachineTypeEnum MACHINE_TYPE;
     private static NumberOfGpusEnum NUMBER_OF_GPUS;
@@ -15,53 +14,14 @@ public class ComputeEngineCreator {
     private static String MAIL_TOTAL_COST;
 
     public static ComputeEngine createComputeEngine() {
-        ComputeEngine engine;
-        String type = TestDataReader.getTestData(COMPUTE_ENGINE_TYPE);
-        switch(type) {
-            case "light": engine = withLightParameters();
-            break;
-            case "complicated": engine = withComplicatedParameters();
-            break;
-            default: engine = withOptimalParameters();
-        }
-        return engine;
-    }
-
-    public static ComputeEngine withOptimalParameters() {
-        NUMBER_OF_INSTANCE = 4;
-        MACHINE_TYPE = MachineTypeEnum.N1_STANDARD_8;
-        NUMBER_OF_GPUS = NumberOfGpusEnum.ONE;
-        GPU_TYPE = GpuTypeEnum.NVIDIA_TESLA_V100;
-        LOCAL_SSD = LocalSsdEnum.TWO;
-        DATA_CENTER_LOCATION = DataCenterLocationEnum.FRANKFURT;
-        COMMITTED_USAGE = CommittedUsageEnum.ONE_YEAR;
-        MAIL_TOTAL_COST = "USD 1,082.77";
-        return new ComputeEngine(NUMBER_OF_INSTANCE, MACHINE_TYPE, NUMBER_OF_GPUS, GPU_TYPE,
-                LOCAL_SSD, DATA_CENTER_LOCATION, COMMITTED_USAGE, MAIL_TOTAL_COST);
-    }
-
-    public static ComputeEngine withLightParameters() {
-        NUMBER_OF_INSTANCE = 1;
-        MACHINE_TYPE = MachineTypeEnum.N1_STANDARD_1;
-        NUMBER_OF_GPUS = NumberOfGpusEnum.ONE;
-        GPU_TYPE = GpuTypeEnum.NVIDIA_TESLA_K80;
-        LOCAL_SSD = LocalSsdEnum.ONE;
-        DATA_CENTER_LOCATION = DataCenterLocationEnum.SOUTH_CAROLINA;
-        COMMITTED_USAGE = CommittedUsageEnum.ONE_YEAR;
-        MAIL_TOTAL_COST = "USD 247.56";
-        return new ComputeEngine(NUMBER_OF_INSTANCE, MACHINE_TYPE, NUMBER_OF_GPUS, GPU_TYPE,
-                LOCAL_SSD, DATA_CENTER_LOCATION, COMMITTED_USAGE, MAIL_TOTAL_COST);
-    }
-
-    public static ComputeEngine withComplicatedParameters() {
-        NUMBER_OF_INSTANCE = 8;
-        MACHINE_TYPE = MachineTypeEnum.N1_HIGHCPU_96;
-        NUMBER_OF_GPUS = NumberOfGpusEnum.EIGHT;
-        GPU_TYPE = GpuTypeEnum.NVIDIA_TESLA_K80;
-        LOCAL_SSD = LocalSsdEnum.EIGHT;
-        DATA_CENTER_LOCATION = DataCenterLocationEnum.NORTHERN_VIRGINIA;
-        COMMITTED_USAGE = CommittedUsageEnum.THREE_YEARS;
-        MAIL_TOTAL_COST = "USD 10,522.84";
+        NUMBER_OF_INSTANCE = Integer.valueOf(TestDataReader.getTestData("number_of_instance"));
+        MACHINE_TYPE = MachineTypeEnum.valueOf(TestDataReader.getTestData("machine_type"));
+        NUMBER_OF_GPUS = NumberOfGpusEnum.valueOf(TestDataReader.getTestData("number_of_gpus"));
+        GPU_TYPE = GpuTypeEnum.valueOf(TestDataReader.getTestData("gpu_type"));
+        LOCAL_SSD = LocalSsdEnum.valueOf(TestDataReader.getTestData("local_ssd"));
+        DATA_CENTER_LOCATION = DataCenterLocationEnum.valueOf(TestDataReader.getTestData("data_center_location"));
+        COMMITTED_USAGE = CommittedUsageEnum.valueOf(TestDataReader.getTestData("committed_usage"));
+        MAIL_TOTAL_COST = TestDataReader.getTestData("mail_total_cost");
         return new ComputeEngine(NUMBER_OF_INSTANCE, MACHINE_TYPE, NUMBER_OF_GPUS, GPU_TYPE,
                 LOCAL_SSD, DATA_CENTER_LOCATION, COMMITTED_USAGE, MAIL_TOTAL_COST);
     }

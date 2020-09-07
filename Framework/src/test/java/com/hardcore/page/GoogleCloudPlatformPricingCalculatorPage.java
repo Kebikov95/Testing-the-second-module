@@ -110,7 +110,6 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
         emailEstimateButton.click();
         emailInput.sendKeys(email);
         sendEmailButton.click();
-        logger.info("Send Email to: [" + email + "]");
         return new TenMinutesMailPage(driver);
     }
 

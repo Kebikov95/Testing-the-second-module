@@ -24,6 +24,7 @@ public class TenMinutesMailPage extends AbstractPage {
     }
 
     public String getMailAddress() {
+        logger.info("Send Email to: [" + mailInput.getAttribute("value") + "]");
         return mailInput.getAttribute("value");
     }
 
