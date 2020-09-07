@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-All_tests" class="navigator-link">
-              <span class="suite-name border-failed">All tests</span>
+              <span class="suite-name border-passed">All tests</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,21 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods, 1 failed,   1 passed</span>
-                  </li>
-                  <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-All_tests" class="hide-methods failed suite-All_tests"> (hide)</a> <!-- hide-methods failed suite-All_tests -->
-                      <a href="#" panel-name="suite-All_tests" class="show-methods failed suite-All_tests"> (show)</a> <!-- show-methods failed suite-All_tests -->
-                    </span>
-                    <div class="method-list-content failed suite-All_tests">
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-All_tests" title="com.hardcore.test.GooglePricingCalculatorPageTest" class="method navigator-link" hash-for-method="fillingOutPriceFormTest">fillingOutPriceFormTest</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content failed suite-All_tests -->
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -114,6 +100,11 @@
                       <a href="#" panel-name="suite-All_tests" class="show-methods passed suite-All_tests"> (show)</a> <!-- show-methods passed suite-All_tests -->
                     </span>
                     <div class="method-list-content passed suite-All_tests">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-All_tests" title="com.hardcore.test.GooglePricingCalculatorPageTest" class="method navigator-link" hash-for-method="fillingOutPriceFormTest">fillingOutPriceFormTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-All_tests" title="com.hardcore.test.GooglePlatformPageTest" class="method navigator-link" hash-for-method="searchInputNotNullTest">searchInputNotNullTest</a> <!-- method navigator-link -->
@@ -131,9 +122,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-All_tests" class="panel All_tests">
-          <div class="suite-All_tests-class-failed">
+          <div class="suite-All_tests-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
+              <img src="passed.png"/>
               <span class="class-name">com.hardcore.test.GooglePricingCalculatorPageTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -142,25 +133,10 @@
                   <a name="fillingOutPriceFormTest">
                   </a> <!-- fillingOutPriceFormTest -->
                   <span class="method-name">fillingOutPriceFormTest</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //md-select-menu//div[contains(text(), &apos;n1-standard-8 (vCPUs: 8, RAM: 30GB)&apos;)] (tried for 10 second(s) with 500 milliseconds interval)
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;DESKTOP-J5DG572&apos;, ip: &apos;192.168.0.100&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;14.0.2&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 80.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20200831163820, moz:geckodriverVersion: 0.27.0, moz:headless: false, moz:processID: 8504, moz:profile: C:\Users\Kirill-PC\AppData\..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, rotatable: false, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: 3e38fc45-f8a0-4d74-ae93-60db3139d7da
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
-	at com.structure.abstractPageFactory.AbstractPage.waitingForItemToLoad(AbstractPage.java:23)
-	at com.structure.abstractPageFactory.AbstractPage.clickToElement(AbstractPage.java:42)
-	at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.machineTypeOptionClick(GoogleCloudPlatformPricingCalculatorPage.java:170)
-	at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.login(GoogleCloudPlatformPricingCalculatorPage.java:93)
-	at com.hardcore.test.GooglePricingCalculatorPageTest.fillingOutPriceFormTest(GooglePricingCalculatorPageTest.java:20)
-... Removed 29 stack frames
-</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-All_tests-class-failed -->
+          </div> <!-- suite-All_tests-class-passed -->
           <div class="suite-All_tests-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -237,7 +213,7 @@ data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'fillingOutPriceFormTest')
 data.setCell(0, 2, 'com.hardcore.test.GooglePricingCalculatorPageTest')
-data.setCell(0, 3, 27143);
+data.setCell(0, 3, 29246);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'searchInputNotNullTest')
 data.setCell(1, 2, 'com.hardcore.test.GooglePlatformPageTest')
@@ -246,7 +222,7 @@ window.suiteTableData['All_tests']= { tableData: data, tableDiv: 'times-div-All_
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 27 seconds</span>
+              <span class="suite-total-time">Total running time: 29 seconds</span>
               <div id="times-div-All_tests">
               </div> <!-- times-div-All_tests -->
             </div> <!-- times-div -->
@@ -279,28 +255,26 @@ return data;
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">searchInputNotNullTest</span>
-                <span class="method-start">18735 ms</span>
+                <span class="method-start">15287 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">browserTearDown</span>
-                <span class="method-start">18776 ms</span>
+                <span class="method-start">15327 ms</span>
               </div> <!-- configuration-method after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.hardcore.test.GooglePricingCalculatorPageTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">browserSetup</span>
-                <span class="method-start">22092 ms</span>
+                <span class="method-start">16266 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">fillingOutPriceFormTest</span>
-                <span class="method-start">37554 ms</span>
+                <span class="method-start">30435 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">browserTearDown</span>
-                <span class="method-start">64947 ms</span>
+                <span class="method-start">59682 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
