@@ -23,8 +23,6 @@ public class CommonConditions {
         logger.info("System value 'surefire.suiteXmlFiles': [" + System.getProperty("surefire.suiteXmlFiles") + "]");
         logger.info("System value 'environment': [" + System.getProperty("environment") + "]");
         logger.info(" System value 'browser': [" + System.getProperty("browser") + "]");
-        System.setProperty("browser", "chrome");
-        System.setProperty("environment", "staging");
         driver = DriverSingleton.getDriver();
         homePage = new GoogleCloudPlatformPage(driver);
     }
