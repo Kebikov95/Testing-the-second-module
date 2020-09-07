@@ -69,8 +69,8 @@
                 <version>2.12</version>
                 <configuration>
                     <suiteXmlFiles>
-<!--                        <suiteXmlFile>src/test/resources/testng-smoke.xml</suiteXmlFile>-->
-                        <suiteXmlFile>${environment}</suiteXmlFile>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <suiteXmlFile>${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
