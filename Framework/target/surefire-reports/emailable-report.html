@@ -8,32 +8,25 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="7">Surefire suite</th></tr>
-<tr><td><a href="#t0">Surefire test</a></td><td class="num">1</td><td class="num">0</td><td class="num attn">1</td><td class="num">82 365</td><td></td><td></td></tr>
+<tr><th colspan="7">All tests</th></tr>
+<tr><td><a href="#t0">All tests</a></td><td class="num">1</td><td class="num">0</td><td class="num attn">1</td><td class="num">67 057</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Surefire suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Surefire test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.hardcore.test.GooglePricingCalculatorPageTest</td><td><a href="#m0">fillingOutPriceFormTest</a></td><td rowspan="1">1599386401178</td><td rowspan="1">38213</td></tr><tr><th colspan="4">Surefire test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.hardcore.test.GooglePlatformPageTest</td><td><a href="#m1">searchInputNotNullTest</a></td><td rowspan="1">1599386381240</td><td rowspan="1">878</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">All tests</th></tr></tbody><tbody id="t0"><tr><th colspan="4">All tests &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.hardcore.test.GooglePricingCalculatorPageTest</td><td><a href="#m0">fillingOutPriceFormTest</a></td><td rowspan="1">1599486167842</td><td rowspan="1">27143</td></tr><tr><th colspan="4">All tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.hardcore.test.GooglePlatformPageTest</td><td><a href="#m1">searchInputNotNullTest</a></td><td rowspan="1">1599486149023</td><td rowspan="1">39</td></tr></tbody>
 </table>
-<h2>Surefire test</h2><h3 id="m0">com.hardcore.test.GooglePricingCalculatorPageTest#fillingOutPriceFormTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;iframe src=&quot;/products/calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame&quot; allowfullscreen=&quot;&quot; cd_frame_id_=&quot;760b77aeda8f431ed301ffbdededbe43&quot;&gt;&lt;/iframe&gt; is not clickable at point (896, 75). Other element would receive the click: &lt;div class=&quot;devsite-doc-set-nav-row&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=85.0.4183.83)
+<h2>All tests</h2><h3 id="m0">com.hardcore.test.GooglePricingCalculatorPageTest#fillingOutPriceFormTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //md-select-menu//div[contains(text(), &apos;n1-standard-8 (vCPUs: 8, RAM: 30GB)&apos;)] (tried for 10 second(s) with 500 milliseconds interval)
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;DESKTOP-J5DG572&apos;, ip: &apos;192.168.0.102&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;14.0.2&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.83, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\KIRILL~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:51270}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 79eec2b4c4a43e19fb90853323529dbf
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-	at com.sun.proxy.$Proxy24.click(Unknown Source)
-	at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.sendEmailWithComponentCost(GoogleCloudPlatformPricingCalculatorPage.java:112)
-	at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.getComponentCostByMail(GoogleCloudPlatformPricingCalculatorPage.java:122)
-	at com.hardcore.test.GooglePricingCalculatorPageTest.fillingOutPriceFormTest(GooglePricingCalculatorPageTest.java:34)
-... Removed 39 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+System info: host: &apos;DESKTOP-J5DG572&apos;, ip: &apos;192.168.0.100&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;14.0.2&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 80.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20200831163820, moz:geckodriverVersion: 0.27.0, moz:headless: false, moz:processID: 8504, moz:profile: C:\Users\Kirill-PC\AppData\..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, rotatable: false, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 3e38fc45-f8a0-4d74-ae93-60db3139d7da
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at com.structure.abstractPageFactory.AbstractPage.waitingForItemToLoad(AbstractPage.java:23)
+	at com.structure.abstractPageFactory.AbstractPage.clickToElement(AbstractPage.java:42)
+	at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.machineTypeOptionClick(GoogleCloudPlatformPricingCalculatorPage.java:170)
+	at com.hardcore.page.GoogleCloudPlatformPricingCalculatorPage.login(GoogleCloudPlatformPricingCalculatorPage.java:93)
+	at com.hardcore.test.GooglePricingCalculatorPageTest.fillingOutPriceFormTest(GooglePricingCalculatorPageTest.java:20)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 <h3 id="m1">com.hardcore.test.GooglePlatformPageTest#searchInputNotNullTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

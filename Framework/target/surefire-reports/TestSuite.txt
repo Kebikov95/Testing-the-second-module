@@ -1,15 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 84.185 s <<< FAILURE! - in TestSuite
-fillingOutPriceFormTest(com.hardcore.test.GooglePricingCalculatorPageTest)  Time elapsed: 39.317 s  <<< FAILURE!
-org.openqa.selenium.ElementClickInterceptedException: 
-element click intercepted: Element <iframe src="/products/calculator/index_ad8ca20a6d1799e286a0c0839aeb86ca523afe927b04501d8ba77dc59e5b8523.frame" allowfullscreen="" cd_frame_id_="760b77aeda8f431ed301ffbdededbe43"></iframe> is not clickable at point (896, 75). Other element would receive the click: <div class="devsite-doc-set-nav-row">...</div>
-  (Session info: chrome=85.0.4183.83)
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 68.317 s <<< FAILURE! - in TestSuite
+fillingOutPriceFormTest(com.hardcore.test.GooglePricingCalculatorPageTest)  Time elapsed: 27.372 s  <<< FAILURE!
+org.openqa.selenium.TimeoutException: 
+Expected condition failed: waiting for visibility of element located by By.xpath: //md-select-menu//div[contains(text(), 'n1-standard-8 (vCPUs: 8, RAM: 30GB)')] (tried for 10 second(s) with 500 milliseconds interval)
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'DESKTOP-J5DG572', ip: '192.168.0.102', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '14.0.2'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 85.0.4183.83, chrome: {chromedriverVersion: 85.0.4183.87 (cd6713ebf92fa..., userDataDir: C:\Users\KIRILL~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:51270}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
-Session ID: 79eec2b4c4a43e19fb90853323529dbf
-	at com.hardcore.test.GooglePricingCalculatorPageTest.fillingOutPriceFormTest(GooglePricingCalculatorPageTest.java:34)
+System info: host: 'DESKTOP-J5DG572', ip: '192.168.0.100', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '14.0.2'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 80.0.1, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20200831163820, moz:geckodriverVersion: 0.27.0, moz:headless: false, moz:processID: 8504, moz:profile: C:\Users\Kirill-PC\AppData\..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, rotatable: false, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 3e38fc45-f8a0-4d74-ae93-60db3139d7da
+	at com.hardcore.test.GooglePricingCalculatorPageTest.fillingOutPriceFormTest(GooglePricingCalculatorPageTest.java:20)
 
