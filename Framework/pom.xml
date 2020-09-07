@@ -69,7 +69,8 @@
                 <version>2.12</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/testng-smoke.xml</suiteXmlFile>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <suiteXmlFile>${surefire.suiteXmlFiles}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
