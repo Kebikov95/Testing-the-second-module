@@ -33,7 +33,7 @@ public class GoogleCloudPlatformPricingCalculatorPage extends AbstractPage {
     private WebElement computeEngineButton;
     @FindBy(xpath = "//input[@id='input_60']")
     private WebElement numberOfInstancesInput;
-    @FindBy(xpath = "//md-select-value[@id='select_value_label_57']")
+    @FindBy(xpath = "//md-select[@placeholder='Instance type']")
     private WebElement machineTypeSelect;
     @FindBy(xpath = "(//md-checkbox[@class='ng-pristine ng-untouched ng-valid ng-empty'])[1]")
     private WebElement addGpusCheckbox;
