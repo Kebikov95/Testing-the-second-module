@@ -20,6 +20,8 @@ public class CommonConditions {
 
     @BeforeMethod()
     public void browserSetup() {
+        System.setProperty("browser", "chrome");
+        System.setProperty("environment", "qa");
         logger.info("System value 'surefire.suiteXmlFiles': [" + System.getProperty("surefire.suiteXmlFiles") + "]");
         logger.info("System value 'environment': [" + System.getProperty("environment") + "]");
         logger.info(" System value 'browser': [" + System.getProperty("browser") + "]");
